@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using BerryAIGen.Github;
@@ -22,27 +24,49 @@ public class UpdateChecker
     public UpdateChecker()
     {
         _cts = new CancellationTokenSource();
-        Client = new GithubClient("RupertAvery", "BerryAIGen.Toolkit");
+        Client = new GithubClient("Berry-Wahlberg", "AIGenManager");
     }
 
-    private async Task<Release> GetLatestRelease()
+    private async Task<Release> GetLatestRelease(CancellationToken cancellationToken = default)
     {
-        var releases = await Client.GetReleases(_cts.Token);
-
+        var releases = await Client.GetReleases(cancellationToken);
         return releases.OrderByDescending(r => r.published_at).First();
     }
 
-
-
-    public async Task<bool> CheckForUpdate(string? path = null)
+    public async Task<bool> CheckForUpdate(string? path = null, int timeout = 3000, CancellationToken cancellationToken = default)
     {
-        LatestRelease = await GetLatestRelease();
+        // If no cancellation token is provided, use the internal one
+        var token = cancellationToken == default ? _cts.Token : cancellationToken;
 
-        var localVersion = SemanticVersionHelper.GetLocalVersion(path);
+        try
+        {
+            LatestRelease = await GetLatestRelease(token);
 
-        SemanticVersion.TryParse(LatestRelease.tag_name, out var releaseVersion);
+            var localVersion = SemanticVersionHelper.GetLocalVersion(path);
 
-        return releaseVersion > localVersion;
+            if (SemanticVersion.TryParse(LatestRelease.tag_name, out var releaseVersion))
+            {
+                return releaseVersion > localVersion;
+            }
+            return false;
+        }
+        catch (OperationCanceledException)
+        {
+            // Re-throw cancellation exceptions
+            throw;
+        }
+        catch (HttpRequestException ex)
+            {
+                Logger.Log($"Network error during update check: {ex.Message}");
+                Logger.Log(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Unexpected error during update check: {ex.Message}");
+                Logger.Log(ex);
+                throw;
+            }
     }
-
 }
+

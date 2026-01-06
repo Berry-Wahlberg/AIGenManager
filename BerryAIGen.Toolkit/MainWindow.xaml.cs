@@ -1,4 +1,4 @@
-using BerryAIGen.Common;
+﻿using BerryAIGen.Common;
 using BerryAIGen.Database;
 using BerryAIGen.Toolkit.Common;
 using BerryAIGen.Toolkit.Models;
@@ -848,29 +848,9 @@ namespace BerryAIGen.Toolkit
 
             if (_settings.CheckForUpdatesOnStartup)
             {
-                _ = Task.Run(async () =>
-                {
-                    var checker = new UpdateChecker();
-
-                    Logger.Log($"Checking for latest version");
-                    try
-                    {
-                        var hasUpdate = await checker.CheckForUpdate();
-
-                        if (hasUpdate)
-                        {
-                            var result = await _messagePopupManager.Show(GetLocalizedText("Main.Update.UpdateAvailable"), "BerryAIGen.Toolkit", PopupButtons.YesNo);
-                            if (result == PopupResult.Yes)
-                            {
-                                CallUpdater();
-                            }
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        await _messagePopupManager.Show(exception.Message, "Update error", PopupButtons.OK);
-                    }
-                });
+                // Show update detection window as a dialog
+                var updateWindow = new UpdateDetectionWindow();
+                updateWindow.ShowDialog();
             }
 
 
@@ -886,7 +866,7 @@ namespace BerryAIGen.Toolkit
                     Path = d,
                 }), confirmScan: false).ContinueWith(d =>
                 {
-                    // 使用Dispatcher确保UI操作在UI线程执行
+                    // Use Dispatcher to ensure UI operations are executed on the UI thread
                     Dispatcher.Invoke(() =>
                     {
                         ServiceLocator.NavigatorService.Goto("search");
@@ -896,7 +876,7 @@ namespace BerryAIGen.Toolkit
                             // Wait for a bit, then show thumbnails
                             _ = Task.Delay(5000).ContinueWith(t =>
                             {
-                                // 使用Dispatcher确保UI操作在UI线程执行
+                                // Use Dispatcher to ensure UI operations are executed on the UI thread
                                 Dispatcher.Invoke(() =>
                                 {
                                     ServiceLocator.SearchService.ExecuteSearch();
@@ -1253,6 +1233,7 @@ namespace BerryAIGen.Toolkit
         }
     }
 }
+
 
 
 
