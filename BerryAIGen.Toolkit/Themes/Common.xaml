@@ -29,6 +29,8 @@
         <Setter Property="Background" Value="{DynamicResource PreviewBackgroundBrush}"></Setter>
     </Style>
 
+
+
     <Style TargetType="Separator">
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
@@ -723,6 +725,56 @@
 
 
     <Style TargetType="ProgressBar">
+        <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Height" Value="4"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid x:Name="TemplateRoot">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="2" SnapsToDevicePixels="True"/>
+                        <Border x:Name="PART_Track" CornerRadius="2"/>
+                        <Border x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{DynamicResource HighlightBrush}" CornerRadius="2" SnapsToDevicePixels="True">
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Border.Triggers>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsIndeterminate" Value="True">
+                            <Setter Property="BorderBrush" TargetName="PART_Indicator" Value="{DynamicResource HighlightBrush}"/>
+                            <Setter Property="Background" TargetName="PART_Indicator" Value="{DynamicResource HighlightBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
+    </Style>
+    
+    <!-- Card Design System -->
+    <Style x:Key="CardStyle" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="CornerRadius" Value="8"></Setter>
+        <Setter Property="Padding" Value="16"></Setter>
+        <Setter Property="Margin" Value="8"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="8" Opacity="0.1" ShadowDepth="2" Direction="270"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="CardStyleDark" TargetType="Border" BasedOn="{StaticResource CardStyle}">
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBrush}"></Setter>
     </Style>
@@ -874,16 +926,24 @@
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
         <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+        <Setter Property="Padding" Value="8,4"></Setter>
+        <Setter Property="Margin" Value="2"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Name="Border" BorderThickness="1"  BorderBrush="{DynamicResource SecondaryBrush}" Background="{TemplateBinding Panel.Background}" Padding="{TemplateBinding Padding}">
+                    <Border Name="Border" 
+                            BorderThickness="1"  
+                            BorderBrush="{DynamicResource SecondaryBrush}" 
+                            Background="{TemplateBinding Panel.Background}" 
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="4">
                         <ContentPresenter Name="contentPresenter" 
                                           Content="{TemplateBinding ContentControl.Content}" 
                                           ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
                                           ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -894,6 +954,7 @@
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                <Setter Property="Opacity" Value="0.6"/>
             </Trigger>
         </Style.Triggers>
 
