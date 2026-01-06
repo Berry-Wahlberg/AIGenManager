@@ -1,0 +1,166 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# CI/CD workflow for WPF Desktop Application (AIGenManager)
+# Features: Build, test (optional), sign (optional), package MSIX, upload artifacts
+# Target: .NET 8 WPF project in BerryAIGen.Toolkit subdirectory
+
+name: .NET Core Desktop - AIGenManager
+
+# Trigger on push/pull request to main branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # Build matrix: Debug/Release configurations + x64 platform (WPF primary architecture)
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        platform: [x64]
+    runs-on: windows-latest
+
+    # Environment variables (project-specific paths - update as needed)
+    env:
+      Solution_Name: AIGenManager.sln                # Core solution filename (verify actual name in repo)
+      Solution_Directory: BerryAIGen.Toolkit         # Subdirectory containing the solution file
+      Test_Project_Path: ''                          # Leave empty if no test projects exist
+      Wap_Project_Directory: ''                      # Leave empty if no WAP packaging project
+      Wap_Project_Path: ''                           # Path to WAP project (e.g., AIGenManager.Package/AIGenManager.Package.wapproj)
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Fetch full history for reliable builds
+
+    # Install .NET 8 SDK (matches WPF project framework version)
+    - name: Install .NET 8 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+        cache: true # Cache NuGet packages to speed up restore step
+
+    # Configure MSBuild (required for WPF project compilation)
+    - name: Setup MSBuild environment
+      uses: microsoft/setup-msbuild@v2
+
+    # Execute unit tests (only if test project path is configured)
+    - name: Run unit tests
+      if: env.Test_Project_Path != ''
+      run: |
+        cd $env:Solution_Directory
+        dotnet test $env:Test_Project_Path --configuration ${{ matrix.configuration }} --no-restore
+      continue-on-error: false # Fail workflow if tests fail
+
+    # Restore solution dependencies (NuGet packages + RuntimeIdentifiers)
+    - name: Restore solution dependencies
+      run: |
+        # Combine solution directory and filename for full path
+        $solutionFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Solution_Name
+        
+        # Validate solution file exists before restore
+        if (-not (Test-Path $solutionFullPath)) {
+            Write-Error "Solution file not found: $solutionFullPath"
+            exit 1
+        }
+        
+        # Run MSBuild restore with multi-core optimization
+        msbuild $solutionFullPath /t:Restore `
+          /p:Configuration=${{ matrix.configuration }} `
+          /p:Platform=${{ matrix.platform }} `
+          /m # Enable multi-processor build
+      continue-on-error: false
+
+    # ========== Optional: Code Signing (only if secrets are configured) ==========
+    - name: Decode signing certificate (PFX)
+      if: (secrets.Base64_Encoded_Pfx != '') && (secrets.Pfx_Key != '') && (env.Wap_Project_Path != '')
+      run: |
+        # Create WAP directory if it doesn't exist
+        if (-not (Test-Path $env:Wap_Project_Directory)) {
+            New-Item -ItemType Directory -Path $env:Wap_Project_Directory | Out-Null
+        }
+        
+        # Decode Base64-encoded PFX certificate from secrets
+        $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
+        $certPath = Join-Path -Path $env:Wap_Project_Directory -ChildPath "GitHubActionsWorkflow.pfx"
+        [IO.File]::WriteAllBytes($certPath, $pfxBytes)
+        
+        # Validate certificate file creation
+        if (-not (Test-Path $certPath)) {
+            Write-Error "Failed to generate certificate file: $certPath"
+            exit 1
+        }
+
+    # Build and package WAP project (generate MSIX installer)
+    - name: Build and package MSIX installer
+      if: env.Wap_Project_Path != ''
+      run: |
+        # Get full path to WAP project
+        $wapFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Wap_Project_Path
+        
+        # Validate WAP project exists
+        if (-not (Test-Path $wapFullPath)) {
+            Write-Error "WAP project file not found: $wapFullPath"
+            exit 1
+        }
+        
+        # Define signing parameters (PowerShell native conditional logic)
+        $signingParams = ""
+        if ("${{ secrets.Base64_Encoded_Pfx }}" -ne "" -and "${{ secrets.Pfx_Key }}" -ne "") {
+            $signingParams = "/p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}"
+        } else {
+            $signingParams = "/p:GenerateTestCertificate=true"
+        }
+        
+        # Build and publish WAP project (with conditional signing)
+        msbuild $wapFullPath `
+          /t:Build;Publish `
+          /p:Configuration=${{ matrix.configuration }} `
+          /p:Platform=${{ matrix.platform }} `
+          /p:UapAppxPackageBuildMode=StoreUpload `
+          /p:AppxBundle=Always `
+          /p:AppxBundlePlatforms=${{ matrix.platform }} `
+          /p:AppxPackageDir="$(Join-Path $env:Solution_Directory 'AppPackages')" `
+          $signingParams `
+          /m # Multi-core build
+      continue-on-error: false
+
+    # Clean up temporary certificate file (prevent leakage)
+    - name: Remove temporary certificate file
+      if: (secrets.Base64_Encoded_Pfx != '') && (env.Wap_Project_Directory != '')
+      run: |
+        $certPath = Join-Path -Path $env:Wap_Project_Directory -ChildPath "GitHubActionsWorkflow.pfx"
+        if (Test-Path $certPath) {
+            Remove-Item -Path $certPath -Force -ErrorAction SilentlyContinue
+        }
+
+    # ========== Artifact Upload ==========
+    # Upload MSIX package (if WAP project is configured)
+    - name: Upload MSIX package artifacts
+      if: env.Wap_Project_Path != ''
+      uses: actions/upload-artifact@v4
+      with:
+        name: MSIX-Package-${{ matrix.configuration }}-${{ matrix.platform }}
+        path: |
+          ${{ env.Solution_Directory }}/AppPackages/**/*.msix
+          ${{ env.Solution_Directory }}/AppPackages/**/*.msixbundle
+          ${{ env.Solution_Directory }}/AppPackages/**/*.appinstaller
+        retention-days: 7 # Retain artifacts for 7 days
+
+    # Upload build output (fallback if no WAP project)
+    - name: Upload build output binaries
+      if: env.Wap_Project_Path == ''
+      uses: actions/upload-artifact@v4
+      with:
+        name: Build-Output-${{ matrix.configuration }}-${{ matrix.platform }}
+        path: |
+          ${{ env.Solution_Directory }}/**/bin/${{ matrix.configuration }}/net8.0-windows/**/*.exe
+          ${{ env.Solution_Directory }}/**/bin/${{ matrix.configuration }}/net8.0-windows/**/*.dll
+          ${{ env.Solution_Directory }}/**/bin/${{ matrix.configuration }}/net8.0-windows/**/*.pdb
+        retention-days: 7
