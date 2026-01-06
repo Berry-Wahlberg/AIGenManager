@@ -45,9 +45,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     strategy:
       matrix:
         configuration: [Debug, Release]
@@ -57,6 +55,7 @@ jobs:
 
     env:
       Solution_Name: your-solution-name                         # Replace with your solution name, i.e. MyWpfApp.sln.
+      Solution_Directory: BerryAIGen.Toolkit                    # Solution subdirectory (fixed path)
       Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       Wap_Project_Directory: your-wap-project-directory-name    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
@@ -73,17 +72,32 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
-    # Execute all unit tests in the solution
+    # Execute all unit tests in the solution (run from solution directory)
     - name: Execute unit tests
-      run: dotnet test
+      run: |
+        cd $env:Solution_Directory
+        dotnet test
+      env:
+        Configuration: ${{ matrix.configuration }}
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
+    # Fixed: Use the solution subdirectory path
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+      run: |
+        # Combine solution directory and name to get full path
+        $solutionFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Solution_Name
+        # Verify file exists before restore
+        if (Test-Path $solutionFullPath) {
+            Write-Host "Restoring solution: $solutionFullPath"
+            msbuild $solutionFullPath /t:Restore /p:Configuration=$env:Configuration
+        } else {
+            Write-Error "Solution file not found at: $solutionFullPath"
+            exit 1
+        }
       env:
         Configuration: ${{ matrix.configuration }}
 
@@ -95,8 +109,22 @@ jobs:
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     # Create the app package by building and packaging the Windows Application Packaging project
+    # Fixed: Use full path for Wap project if it's in the solution subdirectory
     - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+      run: |
+        # Combine solution directory with Wap project path if needed
+        $wapFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Wap_Project_Path
+        # Check if Wap project exists at combined path (fallback to original path if not)
+        if (-not (Test-Path $wapFullPath)) {
+            $wapFullPath = $env:Wap_Project_Path
+        }
+        
+        msbuild $wapFullPath `
+          /p:Configuration=$env:Configuration `
+          /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode `
+          /p:AppxBundle=$env:Appx_Bundle `
+          /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx `
+          /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
       env:
         Appx_Bundle: Always
         Appx_Bundle_Platforms: x86|x64
@@ -105,11 +133,13 @@ jobs:
 
     # Remove the pfx
     - name: Remove the pfx
-      run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
+      run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx -ErrorAction SilentlyContinue
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
+        name: MSIX Package (${{ matrix.configuration }})
+        path: |
+          ${{ env.Solution_Directory }}/${{ env.Wap_Project_Directory }}/AppPackages
+          ${{ env.Wap_Project_Directory }}/AppPackages
