@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public enum ModelType
 {
@@ -10,4 +10,5 @@ public enum ModelType
     Controlnet,
     Poses
 }
+
 

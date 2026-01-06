@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public class ModelVersion
 {
@@ -42,3 +42,4 @@ public class ModelVersionModel
     public bool Poi { get; set; }
     public ModelMode? Mode { get; set; }
 }
+

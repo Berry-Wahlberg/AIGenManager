@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace BerryAIGen.Common.Query;
@@ -43,3 +43,4 @@ public class QueryOptions
 
     public TagsMode TagsMode { get; set; }
 }
+

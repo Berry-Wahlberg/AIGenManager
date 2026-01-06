@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public enum CommercialUse
 {
@@ -7,3 +7,4 @@ public enum CommercialUse
     Rent,
     Sell
 }
+

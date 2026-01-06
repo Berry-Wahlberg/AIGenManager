@@ -1,4 +1,4 @@
-using BerryAIGen.Common;
+﻿using BerryAIGen.Common;
 using System;
 using System.Drawing;
 using System.Globalization;
@@ -1034,3 +1034,4 @@ public static partial class QueryBuilder
 
 
 }
+

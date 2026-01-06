@@ -1,4 +1,4 @@
-# What's New in v1.4
+﻿# What's New in v1.4
 
 * Image viewer features and improvements!
    * Full-screen view 
@@ -38,4 +38,5 @@
 * Thinner Scrollbars
 * Various bug fixes
 
-https://github.com/RupertAvery/DiffusionToolkit/releases/tag/v1.4
+https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/v1.4
+

@@ -1,4 +1,4 @@
-# What's New in v1.6
+﻿# What's New in v1.6
 
 ## Important Changes
 
@@ -61,6 +61,7 @@ You can drag images to folders to move them.
 * Fix broken NovelAI metadata reading introduced by FooocusMRE. (#175)
 
  Thanks to all contributors!
+
 
 
 

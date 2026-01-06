@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using SQLite;
 using System.Text;
 using BerryAIGen.Common;
@@ -646,3 +646,4 @@ namespace BerryAIGen.Database
         public string Path { get; set; }
     }
 }
+

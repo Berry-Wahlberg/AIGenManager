@@ -1,4 +1,4 @@
-using SQLite;
+﻿using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -8,3 +8,4 @@ public class Migration
     public int Id { get; set; }
     public string Name { get; set; }
 }
+

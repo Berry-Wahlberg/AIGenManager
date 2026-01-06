@@ -1,15 +1,15 @@
-# Diffusion Toolkit
+﻿# Diffusion Toolkit
 
 Are you tired of dragging your images into PNG-Info to see the metadata?  Annoyed at how slow navigating through Explorer is to view your images? Want to organize your images without having to move them around to different folders? Wish you could easily search your images metadata? 
 
-Diffusion Toolkit (https://github.com/RupertAvery/DiffusionToolkit) is an image metadata-indexer and viewer for AI-generated images. It aims to help you organize, search and sort your ever-growing collection of best quality 4k masterpieces.
+Diffusion Toolkit (https://github.com/Berry-Wahlberg/AIGenManager) is an image metadata-indexer and viewer for AI-generated images. It aims to help you organize, search and sort your ever-growing collection of best quality 4k masterpieces.
 
 # Installation
 
 ### Windows
 
-* If you haven’t installed it yet, download and install the [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-* [Download the latest release](https://github.com/RupertAvery/DiffusionToolkit/releases/latest) 
+* If you haven鈥檛 installed it yet, download and install the [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+* [Download the latest release](https://github.com/Berry-Wahlberg/AIGenManager/releases/latest) 
     * Under the latest release, expand Assets and download **Diffusion.Toolkit.v1.9.0.zip**.
 * Extract all files into a folder
 
@@ -48,3 +48,4 @@ No official build is currently available, and while it can build on MacOS, getti
 * Drag and Drop images onto the Preview to view them without scanning
 * Open images with External Applications
 * Localization (feel free to contribute and fix the AI-generated translations!)
+

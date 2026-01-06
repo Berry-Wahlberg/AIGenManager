@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO.Compression;
 using System.Security.Cryptography;
 using BerryAIGen.Common;
@@ -39,3 +39,4 @@ public class ModelScanner
         }
     }
 }
+

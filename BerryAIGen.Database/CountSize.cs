@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace BerryAIGen.Database;
 
@@ -14,3 +14,4 @@ public class CountSize
         size = Size;
     }
 }
+

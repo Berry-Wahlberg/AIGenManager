@@ -1,4 +1,4 @@
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using SQLite;
 using System.Text;
 using BerryAIGen.Common;
@@ -722,3 +722,4 @@ LEFT JOIN (SELECT RootId, COUNT(*) AS Children FROM directoryTree WHERE Depth = 
         public bool Archived { get; set; }
     }
 }
+

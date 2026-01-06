@@ -1,4 +1,4 @@
-# What's New in v1.5.1
+﻿# What's New in v1.5.1
 
 * Faster paging
 * Load thumbnails on demand instead of everything up front
@@ -30,4 +30,5 @@
 
 **NOTE:** This version makes changes to the database schema. On startup, a copy of your database will be created before changes are made. 
 
-https://github.com/RupertAvery/DiffusionToolkit/releases/tag/v1.5.1
+https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/v1.5.1
+

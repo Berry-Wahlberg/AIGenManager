@@ -1,4 +1,4 @@
-
+﻿
 # What's New in v0.9
 
 * Rescan folders renamed to **Scan folders for new images** (icon also changed)
@@ -31,4 +31,5 @@
 * Preview Pane context menu added
    * Right-click > Fit to Preview
 
-https://github.com/RupertAvery/DiffusionToolkit/releases/tag/beta_v0.9
+https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/beta_v0.9
+

@@ -1,4 +1,4 @@
-namespace BerryAIGen.Database
+﻿namespace BerryAIGen.Database
 {
     public partial class Migrations
     {
@@ -18,3 +18,4 @@ ALTER TABLE ""AlbumImageTemp"" RENAME TO ""AlbumImage"";";
         }
     }
 }
+

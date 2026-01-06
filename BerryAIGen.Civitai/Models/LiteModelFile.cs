@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public class LiteModelFile
 {
@@ -11,3 +11,4 @@ public class LiteModelFile
     public string DownloadUrl { get; set; }
     public bool Primary { get; set; }
 }
+

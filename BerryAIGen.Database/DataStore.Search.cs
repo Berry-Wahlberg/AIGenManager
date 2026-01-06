@@ -1,4 +1,4 @@
-using BerryAIGen.Common;
+﻿using BerryAIGen.Common;
 using BerryAIGen.Common.Query;
 using BerryAIGen.Database.Models;
 using System;
@@ -631,3 +631,4 @@ namespace BerryAIGen.Database
 
     }
 }
+

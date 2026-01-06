@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public class ModelSearchParameters
 {
@@ -71,3 +71,4 @@ public class ModelSearchParameters
     /// </summary>
     public bool? Nsfw { get; set; }
 }
+

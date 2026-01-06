@@ -1,4 +1,4 @@
-namespace BerryAIGen.Database;
+﻿namespace BerryAIGen.Database;
 
 public interface IAlbumInfo
 {
@@ -14,3 +14,4 @@ public class AlbumListItem : IAlbumInfo
     public DateTime LastUpdated { get; set; }
     public int ImageCount { get; set; }
 }
+

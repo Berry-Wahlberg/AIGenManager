@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using BerryAIGen.Common.Query;
 
 namespace BerryAIGen.Database;
@@ -191,3 +191,4 @@ public static class ComfyUIQueryBuilder
         );
     }
 }
+

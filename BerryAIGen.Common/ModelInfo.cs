@@ -1,4 +1,4 @@
-namespace BerryAIGen.Common;
+﻿namespace BerryAIGen.Common;
 
 public class ModelInfo
 {
@@ -6,3 +6,4 @@ public class ModelInfo
     public string Hash { get; set; }
     public string HashV2 { get; set; }
 }
+

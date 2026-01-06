@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public class ModelCollection
 {
@@ -10,3 +10,4 @@ public class ModelCollection
     public double Date { get; set; }
     public List<Model> Models { get; set; }
 }
+

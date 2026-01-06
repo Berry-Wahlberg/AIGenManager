@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public enum SortOrder
 {
@@ -9,3 +9,4 @@ public enum SortOrder
     MostCollected,
     Newest
 }
+

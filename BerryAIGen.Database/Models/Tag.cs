@@ -1,4 +1,4 @@
-using SQLite;
+﻿using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -15,3 +15,4 @@ public class TagCount
     public string Name { get; set; }
     public int Count { get; set; }
 }
+

@@ -1,4 +1,4 @@
-# What's New in v1.9.0
+﻿# What's New in v1.9.0
 
 There have been a lot of improvements in speeding up the application, especially around how images are scanned and how thumbnails are loaded and displayed.
 
@@ -105,7 +105,7 @@ To remove the rating on selected images you can now press the tilde button ~ on 
 
 You can now configure external applications to open selected images directly from the thumbnail or preview via right-click. To set this up, go to **Settings** and open the **External Applications** tab.
 
-You can also launch external applications using the shortcut **Shift+**`<Key>`, where `<Key>` corresponds to the application's position in your configured list. The keys 1–9 and 0 are available, with 0 representing the 10th application. You can reorder the list to change shortcut assignments.
+You can also launch external applications using the shortcut **Shift+**`<Key>`, where `<Key>` corresponds to the application's position in your configured list. The keys 1鈥? and 0 are available, with 0 representing the 10th application. You can reorder the list to change shortcut assignments.
 
 Multiple files can be selected and opened at once, as long as the external application supports receiving multiple files via the command line.
 
@@ -141,7 +141,7 @@ DPI Awareness has been enabled. This might have caused issues for some users wit
 
 ## Persistent thumbnail caching
 
-Diffusion Toolkit now creates a `dt_thumbnails.db` file in each directory containing indexed images the first time thumbnails are viewed. With thumbnails now saved to disk, they load significantly faster—even after restarting the application.
+Diffusion Toolkit now creates a `dt_thumbnails.db` file in each directory containing indexed images the first time thumbnails are viewed. With thumbnails now saved to disk, they load significantly faster鈥攅ven after restarting the application.
 
 This reduces disk activity, which is especially helpful for users with disk-based storage. It's also great news for those working with large images, as thumbnails no longer need to be regenerated each time.
 
@@ -235,3 +235,4 @@ Image size was previously read only from AI-generated metadata. Diffusion Toolki
   * Show/Hide notifications
   * Show/Hide Tagging UI
   * Advance on Tag toggle
+
