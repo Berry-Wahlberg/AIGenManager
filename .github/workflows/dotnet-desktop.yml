@@ -110,6 +110,14 @@ jobs:
             exit 1
         }
         
+        # Define signing parameters (PowerShell native conditional logic)
+        $signingParams = ""
+        if ("${{ secrets.Base64_Encoded_Pfx }}" -ne "" -and "${{ secrets.Pfx_Key }}" -ne "") {
+            $signingParams = "/p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}"
+        } else {
+            $signingParams = "/p:GenerateTestCertificate=true"
+        }
+        
         # Build and publish WAP project (with conditional signing)
         msbuild $wapFullPath `
           /t:Build;Publish `
@@ -119,9 +127,7 @@ jobs:
           /p:AppxBundle=Always `
           /p:AppxBundlePlatforms=${{ matrix.platform }} `
           /p:AppxPackageDir="$(Join-Path $env:Solution_Directory 'AppPackages')" `
-          ${{ (secrets.Base64_Encoded_Pfx != '' && secrets.Pfx_Key != '') ? 
-              "/p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}" : 
-              "/p:GenerateTestCertificate=true" }} `
+          $signingParams `
           /m # Multi-core build
       continue-on-error: false
 
