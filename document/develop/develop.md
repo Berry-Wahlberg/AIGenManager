@@ -1,4 +1,4 @@
-﻿# BerryAIGen.Toolkit - Technical Development Documentation
+# BerryAIGen.Toolkit - Technical Development Documentation
 
 ## 1. Overview
 
@@ -28,52 +28,52 @@ The vision of BerryAIGen.Toolkit is to create a user-friendly, performant, and e
 The project follows a modular architecture with clear separation of concerns:
 
 ```
-鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹?                         Presentation Layer                         鈹?
-鈹?  (WPF UI, XAML, Controls, Pages)                                   鈹?
-鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-                            鈹?
-鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈻尖攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹?                        Business Layer                              鈹?
-鈹?  (ViewModels, Services, Converters, Commands)                      鈹?
-鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-                            鈹?
-鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈻尖攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹?                        Data Layer                                  鈹?
-鈹?  (Database, Models, Repositories, Migrations)                     鈹?
-鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-                            鈹?
-鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈻尖攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹?                        External Layer                              鈹?
-鈹?  (File System, External Libraries, APIs)                          鈹?
-鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+┌─────────────────────────────────────────────────────────────────────┐
+│                          Presentation Layer                         │
+│   (WPF UI, XAML, Controls, Pages)                                   │
+└───────────────────────────┬─────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────────┐
+│                         Business Layer                              │
+│   (ViewModels, Services, Converters, Commands)                      │
+└───────────────────────────┬─────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────────┐
+│                         Data Layer                                  │
+│   (Database, Models, Repositories, Migrations)                     │
+└───────────────────────────┬─────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────────┐
+│                         External Layer                              │
+│   (File System, External Libraries, APIs)                          │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ### 2.2 Project Structure
 
 ```
 BerryAIGen.Toolkit/
-鈹溾攢鈹€ BerryAIGen.Civitai/          # Civitai integration
-鈹溾攢鈹€ BerryAIGen.Common/           # Common utilities and interfaces
-鈹溾攢鈹€ BerryAIGen.Data/             # Data models and interfaces
-鈹溾攢鈹€ BerryAIGen.Database/         # Database implementation (SQLite)
-鈹溾攢鈹€ BerryAIGen.Github/           # GitHub integration
-鈹溾攢鈹€ BerryAIGen.IO/               # File I/O operations
-鈹溾攢鈹€ BerryAIGen.Scripting/        # Scripting support
-鈹溾攢鈹€ BerryAIGen.Toolkit/          # Main application (WPF)
-鈹?  鈹溾攢鈹€ Controls/               # Custom WPF controls
-鈹?  鈹溾攢鈹€ Converters/             # Value converters
-鈹?  鈹溾攢鈹€ Configuration/          # Configuration management
-鈹?  鈹溾攢鈹€ Localization/           # Internationalization support
-鈹?  鈹溾攢鈹€ Models/                 # View models
-鈹?  鈹溾攢鈹€ Pages/                  # Application pages
-鈹?  鈹溾攢鈹€ Services/               # Business services
-鈹?  鈹溾攢鈹€ Thumbnails/             # Thumbnail generation
-鈹?  鈹斺攢鈹€ Themes/                 # UI themes and resources
-鈹溾攢鈹€ BerryAIGen.Updater/          # Application updater
-鈹溾攢鈹€ BerryAIGen.Video/            # Video support
-鈹溾攢鈹€ TestBed/                     # Test application
-鈹斺攢鈹€ TestHarness/                 # Unit tests
+├── BerryAIGen.Civitai/          # Civitai integration
+├── BerryAIGen.Common/           # Common utilities and interfaces
+├── BerryAIGen.Data/             # Data models and interfaces
+├── BerryAIGen.Database/         # Database implementation (SQLite)
+├── BerryAIGen.Github/           # GitHub integration
+├── BerryAIGen.IO/               # File I/O operations
+├── BerryAIGen.Scripting/        # Scripting support
+├── BerryAIGen.Toolkit/          # Main application (WPF)
+│   ├── Controls/               # Custom WPF controls
+│   ├── Converters/             # Value converters
+│   ├── Configuration/          # Configuration management
+│   ├── Localization/           # Internationalization support
+│   ├── Models/                 # View models
+│   ├── Pages/                  # Application pages
+│   ├── Services/               # Business services
+│   ├── Thumbnails/             # Thumbnail generation
+│   └── Themes/                 # UI themes and resources
+├── BerryAIGen.Updater/          # Application updater
+├── BerryAIGen.Video/            # Video support
+├── TestBed/                     # Test application
+└── TestHarness/                 # Unit tests
 ```
 
 ## 3. Technical Stack

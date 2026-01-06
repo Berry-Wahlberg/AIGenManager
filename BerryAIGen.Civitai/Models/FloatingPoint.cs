@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Civitai.Models;
+namespace BerryAIGen.Civitai.Models;
 
 public enum FloatingPoint
 {
@@ -8,4 +8,3 @@ public enum FloatingPoint
     bf16,
     nf4
 }
-

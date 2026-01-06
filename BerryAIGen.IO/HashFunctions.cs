@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography;
+using System.Security.Cryptography;
 
 namespace BerryAIGen.IO;
 
@@ -43,4 +43,3 @@ public static class HashFunctions
         return Convert.ToHexString(sha256).ToLower();
     }
 }
-

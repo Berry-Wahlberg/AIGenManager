@@ -1,4 +1,4 @@
-﻿# Diffusion Toolkit Release v1.2
+# Diffusion Toolkit Release v1.2
 
 Diffusion Toolkit is an image metadata-indexer and viewer for AI-generated images.  It scans your 50,000 image collection in seconds and lets you search them by prompt, seed, hash and more.
 
@@ -27,10 +27,10 @@ Metadata formats supported are:
 
 How to get it:
 
-* [Download](https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/v1.2
+* [Download](https://github.com/RupertAvery/DiffusionToolkit/releases/tag/v1.2
 ) (Windows)
 * Requires [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) 
-* [Usage](https://github.com/Berry-Wahlberg/AIGenManager/blob/master/Diffusion.Toolkit/Tips.md)
+* [Usage](https://github.com/RupertAvery/DiffusionToolkit/blob/master/Diffusion.Toolkit/Tips.md)
 
 # What's New in v1.2
 
@@ -66,5 +66,4 @@ How to get it:
    
 
 
-https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/v1.2
-
+https://github.com/RupertAvery/DiffusionToolkit/releases/tag/v1.2

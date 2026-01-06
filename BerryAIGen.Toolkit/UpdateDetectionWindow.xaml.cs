@@ -7,7 +7,6 @@ using BerryAIGen.Common;
 using BerryAIGen.Toolkit.Common;
 using BerryAIGen.Toolkit.Localization;
 using BerryAIGen.Toolkit.Models;
-using BerryAIGen.Toolkit.Services;
 
 namespace BerryAIGen.Toolkit
 {
@@ -19,18 +18,17 @@ namespace BerryAIGen.Toolkit
         private UpdateChecker _updateChecker;
         private CancellationTokenSource _cts;
         private bool _isChecking;
-        private MessageService _messageService; // Fixed: Changed from non-existent IMessagePopupManager to MessageService
+        private IMessagePopupManager _messagePopupManager;
 
         public UpdateDetectionWindow()
         {
             InitializeComponent();
+            _messagePopupManager = ServiceLocator.MessageService;
             Loaded += UpdateDetectionWindow_Loaded;
         }
 
         private async void UpdateDetectionWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // Get the MessageService when the window is loaded, not in the constructor
-            _messageService = ServiceLocator.MessageService;
             await CheckForUpdatesAsync();
         }
 
@@ -90,7 +88,7 @@ namespace BerryAIGen.Toolkit
 
         private async Task HandleUpdateAvailableAsync()
         {
-            var result = await _messageService.Show(
+            var result = await _messagePopupManager.Show(
                 GetLocalizedText("Main.Update.UpdateAvailable"),
                 "AIGenManager",
                 PopupButtons.YesNo);

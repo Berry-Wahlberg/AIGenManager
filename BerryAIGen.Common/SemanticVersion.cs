@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -98,4 +98,3 @@ public class SemanticVersion : IComparable<SemanticVersion>
         return a.CompareTo(b) < 0;
     }
 }
-

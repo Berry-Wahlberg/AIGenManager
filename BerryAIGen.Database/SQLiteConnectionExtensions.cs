@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using SQLite;
@@ -51,4 +51,3 @@ public static class SQLiteConnectionExtensions
     //}
 
 }
-

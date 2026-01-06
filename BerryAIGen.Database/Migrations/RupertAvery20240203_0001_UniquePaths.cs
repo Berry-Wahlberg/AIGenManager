@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Database.Models;
+using BerryAIGen.Database.Models;
 
 namespace BerryAIGen.Database
 {
@@ -58,4 +58,3 @@ namespace BerryAIGen.Database
 
     }
 }
-

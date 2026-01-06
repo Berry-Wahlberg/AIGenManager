@@ -1,4 +1,4 @@
-﻿# Search Help
+# Search Help
 
 You can search images using querying or filtering. 
 
@@ -364,5 +364,4 @@ Near the bottom of the tab you will see a bunch of parameters with **True** and 
 The Workflow tab will filter images with ComfyUI metadata.  Here you can select what properties you want to search on and how to search on the values. For text properties you usually want to use *contains*, while other methods might be useful such as *starts with*.
 
 You can combine filters with *and*, *or*, *not* operators.  The order of the operators matters, as the results of a filter will be modified with the next filter, so try to plan your filters accordingly.
-
 

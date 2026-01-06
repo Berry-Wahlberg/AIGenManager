@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Database;
+namespace BerryAIGen.Database;
 
 public class CSVParser
 {
@@ -58,4 +58,3 @@ public class CSVParser
         return result;
     }
 }
-

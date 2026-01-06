@@ -1,4 +1,4 @@
-﻿﻿using BerryAIGen.Common;
+﻿using BerryAIGen.Common;
 using BerryAIGen.Toolkit.Models;
 using BerryAIGen.Toolkit.Services;
 using BerryAIGen.Video;
@@ -56,7 +56,6 @@ public class ThumbnailService
         _defaultStream = new MemoryStream();
 
         _enableCache = true;
-        Size = 128;
 
         //StreamResourceInfo sri = Application.GetResourceStream(new Uri("Images/thumbnail.png", UriKind.Relative));
         //if (sri != null)
@@ -156,7 +155,7 @@ public class ThumbnailService
             field = value;
             ThumbnailCache.Instance.Clear();
         }
-    }
+    } = 128;
 
     public bool EnableCache
     {
@@ -455,7 +454,6 @@ public class ThumbnailService
     }
 
 }
-
 
 
 

@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Updater
+namespace BerryAIGen.Updater
 {
     partial class Form1
     {
@@ -102,4 +102,3 @@
         private CustomTextBox textBoxNotes;
     }
 }
-

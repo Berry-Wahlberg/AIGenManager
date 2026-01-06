@@ -1,4 +1,4 @@
-﻿
+
 using System.Windows.Controls;
 using BerryAIGen.Common;
 
@@ -11,7 +11,6 @@ public interface INavigatorService
     void RegisterRoute(string path, Page page);
 
 }
-
 
 
 

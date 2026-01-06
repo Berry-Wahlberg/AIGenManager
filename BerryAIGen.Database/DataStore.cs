@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using BerryAIGen.Database.Models;
@@ -55,7 +55,7 @@ public partial class DataStore
 
             using var db = OpenConnection();
 
-            // Attempt to load SQLite extensions, but continue execution if failed
+            // 尝试加载SQLite扩展，但如果失败则继续执行
             try
             {
                 db.EnableLoadExtension(true);
@@ -71,21 +71,21 @@ public partial class DataStore
                     }
                     catch (Exception ex)
                     {
-                        // Log error but don't terminate the application
+                        // 记录错误但不中断应用程序
                         Console.WriteLine($"Warning: Failed to load SQLite extension: {ex.Message}");
-                        // Continue execution, extensions not required
+                        // 继续执行，不依赖扩展
                     }
                 }
                 else
                 {
                     Console.WriteLine($"Warning: SQLite extension file not found at: {extensionPath}");
-                    // Continue execution, extensions not required
+                    // 继续执行，不依赖扩展
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Warning: Failed to enable SQLite extension loading: {ex.Message}");
-                // Continue execution, extensions not required
+                // 继续执行，不依赖扩展
             }
 
             var migrations = new Migrations(db);
@@ -326,4 +326,3 @@ public class UsedPrompt
     public string? Prompt { get; set; }
     public int Usage { get; set; }
 }
-

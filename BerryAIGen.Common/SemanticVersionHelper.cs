@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 
 namespace BerryAIGen.Common;
 
@@ -18,4 +18,3 @@ public class SemanticVersionHelper
         return localVersion;
     }
 }
-

@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Civitai.Models;
+namespace BerryAIGen.Civitai.Models;
 
 public class LiteModelVersion
 {
@@ -12,4 +12,3 @@ public class LiteModelVersion
     //public List<ModelImage> Images { get; set; }
     //public Stats Stats { get; set; }
 }
-

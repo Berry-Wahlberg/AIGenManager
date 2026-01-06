@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Common;
+using BerryAIGen.Common;
 using SQLite;
 
 namespace BerryAIGen.Database.Models;
@@ -82,4 +82,3 @@ public class ImageView
     public bool HasError { get; set; }
     public ImageType Type { get; set; }
 }
-

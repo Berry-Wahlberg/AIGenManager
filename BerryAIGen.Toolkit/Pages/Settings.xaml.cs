@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Common;
+using BerryAIGen.Common;
 using BerryAIGen.Database;
 using BerryAIGen.Toolkit.Common;
 using BerryAIGen.Toolkit.Configuration;
@@ -435,6 +435,5 @@ namespace BerryAIGen.Toolkit.Pages
 
 
 }
-
 
 

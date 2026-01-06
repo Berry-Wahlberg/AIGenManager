@@ -113,4 +113,3 @@ public class BaseNotify : INotifyPropertyChanged
 
 
 
-

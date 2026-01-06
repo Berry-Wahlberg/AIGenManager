@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Common;
+using BerryAIGen.Common;
 using System.Threading;
 
 namespace BerryAIGen.IO
@@ -178,4 +178,3 @@ namespace BerryAIGen.IO
 
     }
 }
-

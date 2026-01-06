@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Common;
+namespace BerryAIGen.Common;
 
 public class ModelView
 {
@@ -9,4 +9,3 @@ public class ModelView
     public string SHA256 { get; set; }
     public int ImageCount { get; set; }
 }
-

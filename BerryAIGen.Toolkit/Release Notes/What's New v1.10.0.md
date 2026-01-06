@@ -1,4 +1,4 @@
-﻿# What's New in v1.10.0
+# What's New in v1.10.0
 
 ## Updated to .NET 10
 
@@ -50,7 +50,6 @@ The Tags filter should be visible. You can toggle it via **Menu > View > Tags**
   
 
  
-
 
 
 

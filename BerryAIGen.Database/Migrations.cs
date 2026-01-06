@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using BerryAIGen.Common;
 using BerryAIGen.Database.Models;
 using SQLite;
@@ -102,4 +102,3 @@ public partial class Migrations
         }
     }
 }
-

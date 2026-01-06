@@ -8,4 +8,3 @@ public delegate void SettingChangedEventHander(object sender, SettingChangedEven
 
 
 
-

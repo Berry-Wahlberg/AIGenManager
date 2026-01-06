@@ -1,4 +1,4 @@
-﻿# What's New in v1.8.0
+# What's New in v1.8.0
 
 Diffusion Toolkit can now search on raw metadata and ComfyUI workflow data. To do this, you need to enable the following settings in **Settings > Metadata**:
 
@@ -17,10 +17,10 @@ You will still be able to view the workflow and the raw metadata in the Metadata
 
 Once either of these settings are enabled, you will need to rescan your images using one of the following methods:
 
-* **Edit > Rebuild Metadata** 鈥?Rescans all images in your database.
-* **Search > Rescan Metadata** 鈥?Rescans images in current search results.
-* **Right-click a Folder > Rescan** 鈥?Rescans all images in a selected folder.
-* **Right-click Selected Images > Rescan** 鈥?Rescans only selected images.
+* **Edit > Rebuild Metadata** – Rescans all images in your database.
+* **Search > Rescan Metadata** – Rescans images in current search results.
+* **Right-click a Folder > Rescan** – Rescans all images in a selected folder.
+* **Right-click Selected Images > Rescan** – Rescans only selected images.
 
 ## ComfyUI Workflow Search
 

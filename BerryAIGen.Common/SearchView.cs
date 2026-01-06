@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Common;
+namespace BerryAIGen.Common;
 
 public enum SearchView
 {
@@ -7,4 +7,3 @@ public enum SearchView
     Favorites,
     Folder
 }
-

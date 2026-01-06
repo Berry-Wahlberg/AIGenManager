@@ -1,4 +1,4 @@
-﻿# What's New in v1.5
+# What's New in v1.5
 
 * Metadata Viewer changes
   * Metadata is now always shown below the preview
@@ -34,5 +34,4 @@
 * Crash opening app: "An unhandled exception occured: 'N' is an invalid start of a value  (#155) (thanks to kwaegel)
 * DiffusionToolkit not reading separately stored aesthetic score tags from A1111 files in certain circumstances (#156) (thanks to curiousjp)
 
-https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/v1.5
-
+https://github.com/RupertAvery/DiffusionToolkit/releases/tag/v1.5

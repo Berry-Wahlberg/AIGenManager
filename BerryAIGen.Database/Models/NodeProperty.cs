@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -8,4 +8,3 @@ public class NodeProperty
     public string Name { get; set; }
     public string Value { get; set; }
 }
-

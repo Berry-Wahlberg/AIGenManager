@@ -1,4 +1,4 @@
-﻿using Dapper;
+using Dapper;
 using SQLite;
 
 namespace BerryAIGen.Database.Models
@@ -24,4 +24,3 @@ namespace BerryAIGen.Database.Models
         public bool HasChildren { get; set; }
     }
 }
-

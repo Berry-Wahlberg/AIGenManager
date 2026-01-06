@@ -231,4 +231,3 @@ public class ThumbnailPaneModel : BaseNotify
 
 
 
-

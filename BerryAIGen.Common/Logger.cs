@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace BerryAIGen.Common;
@@ -23,4 +23,3 @@ public class Logger
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Xml.Linq;
 
 namespace BerryAIGen.IO
@@ -140,4 +140,3 @@ namespace BerryAIGen.IO
         }
     }
 }
-

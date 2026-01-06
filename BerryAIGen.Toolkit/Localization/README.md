@@ -1,4 +1,4 @@
-﻿# Localization
+# Localization
 
 To add a language, copy `default.json` and rename to the locale you want.
 
@@ -11,5 +11,4 @@ so I usually split the file.
 Some tools will eventually be provided to diff json files if there are new entries in the default that need to be added to localized files.
 
 You should keep the order of the entries consistent with the default to make them easy to find.
-
 

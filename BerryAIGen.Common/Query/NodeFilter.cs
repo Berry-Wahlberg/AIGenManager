@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Common.Query;
+namespace BerryAIGen.Common.Query;
 
 public class NodeFilter
 {
@@ -10,4 +10,3 @@ public class NodeFilter
     public string Value { get; set; }
 
 }
-

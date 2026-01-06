@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Common.Query;
+using BerryAIGen.Common.Query;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -736,4 +736,3 @@ namespace BerryAIGen.Database
         //}
     }
 }
-

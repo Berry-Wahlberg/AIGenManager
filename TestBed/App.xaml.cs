@@ -1,4 +1,4 @@
-﻿using System.Configuration;
+using System.Configuration;
 using System.Data;
 using System.Windows;
 
@@ -12,4 +12,3 @@ namespace TestBed
     }
 
 }
-

@@ -1,31 +1,18 @@
 <ResourceDictionary  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- 5-Level Grayscale System -->
-    <Color x:Key="White">#FFFFFF</Color>
-    <Color x:Key="Gray1">#3C3C3C</Color>
-    <Color x:Key="Gray2">#2D2D30</Color>
-    <Color x:Key="Gray3">#666666</Color>
-    <Color x:Key="Gray4">#CCCCCC</Color>
-    
-    <!-- Core Colors -->
     <Color x:Key="Background">#1E1E1E</Color>
     <Color x:Key="ControlBackground">#2D2D30</Color>
     <Color x:Key="Splitter">#444444</Color>
-    <Color x:Key="Focused">#2196F3</Color>
-    <Color x:Key="Highlight">#2196F3</Color>
-    <Color x:Key="HighlightFocused">#64B5F6</Color>
-    <Color x:Key="BgHighlight">#7E2D2D30</Color>
+    <Color x:Key="Focused">#007ACC</Color>
+    <Color x:Key="Highlight">#264F78</Color>
+    <Color x:Key="HighlightFocused">#1F6099</Color>
+    <Color x:Key="BgHighlight">#7E444444</Color>
     <Color x:Key="DisabledForeground">#666666</Color>
     <Color x:Key="DisabledBackground">#3E3E42</Color>
     <Color x:Key="Foreground">#FFFFFF</Color>
     <Color x:Key="PreviewBackground">#252526</Color>
-    <Color x:Key="ToastBackground">#2196F3</Color>
-    
-    <!-- Accent Colors -->
-    <Color x:Key="Accent">#2196F3</Color>
-    <Color x:Key="AccentLight">#64B5F6</Color>
-    <Color x:Key="AccentDark">#1976D2</Color>
+    <Color x:Key="ToastBackground">#00B3BB</Color>
 
 
     <BitmapImage  x:Key="CopyIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Icons/Dark/copy-32.png" />

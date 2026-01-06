@@ -41,4 +41,3 @@ public class AlbumModel : BaseNotify, IAlbumInfo
 
 
 
-

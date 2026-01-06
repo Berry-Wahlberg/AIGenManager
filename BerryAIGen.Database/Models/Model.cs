@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -12,4 +12,3 @@ public class Model
     public string Hashv2 { get; set; }
     public string SHA256 { get; set; }
 }
-

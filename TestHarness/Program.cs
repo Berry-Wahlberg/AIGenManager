@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+// See https://aka.ms/new-console-template for more information
 
 using System.Security.Cryptography;
 using BerryAIGen.IO;
@@ -131,4 +131,3 @@ async Task<Results<LiteModel>> GetPage(int page, int? total = 0)
 //file.seek(0x100000)
 //m.update(file.read(0x10000))
 //return m.hexdigest()[0:8]
-

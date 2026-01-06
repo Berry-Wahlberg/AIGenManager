@@ -1,4 +1,4 @@
-﻿# What's New in v1.9.1
+# What's New in v1.9.1
 
 ## Improved folder management
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -120,4 +120,3 @@ public class Filter
     public IEnumerable<NodeFilter>? NodeFilters { get; set; }
     public IReadOnlyCollection<int>? AlbumIds { get; set; }
 }
-

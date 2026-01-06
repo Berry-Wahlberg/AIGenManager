@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using BerryAIGen.Database.Models;
 using Microsoft.VisualBasic;
 using SQLite;
@@ -308,4 +308,3 @@ namespace BerryAIGen.Database
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -18,6 +18,5 @@ public class QueryItem
     public string Name { get; set; }
     public DateTime CreatedDate { get; set; }
 }
-
 
 

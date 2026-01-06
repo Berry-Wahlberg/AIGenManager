@@ -1,4 +1,4 @@
-﻿# What's New in v1.0
+# What's New in v1.0
 
 * Less files! All .NET assemblies are now packaged into a single executable. If you're coming from an older version, you may want to start anew and remove all the old files, as the updater doesn't remove existing files.
 * The Diffusion view will immediate display all images (no search query) upon loading.
@@ -39,5 +39,4 @@
    * Experimental, as I'm not completely sure about the format.
 
 
-https://github.com/Berry-Wahlberg/AIGenManager/releases/tag/v1.0
-
+https://github.com/RupertAvery/DiffusionToolkit/releases/tag/v1.0

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Security.Policy;
@@ -91,4 +91,3 @@ namespace TestBed
         }
     }
 }
-

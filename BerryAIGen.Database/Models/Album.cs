@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -11,4 +11,3 @@ public class Album
     public DateTime LastUpdated { get; set; }
 
 }
-

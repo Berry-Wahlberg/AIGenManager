@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Common.Query;
+namespace BerryAIGen.Common.Query;
 
 public enum NodeOperation
 {
@@ -6,4 +6,3 @@ public enum NodeOperation
     UNION,
     EXCEPT
 }
-

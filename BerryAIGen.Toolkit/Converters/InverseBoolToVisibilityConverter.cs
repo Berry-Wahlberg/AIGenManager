@@ -25,4 +25,3 @@ public class InverseBoolToVisibilityConverter : IValueConverter
 
 
 
-

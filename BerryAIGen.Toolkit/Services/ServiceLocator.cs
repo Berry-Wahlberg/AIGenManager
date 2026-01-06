@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Toolkit.Common;
+using BerryAIGen.Toolkit.Common;
 using BerryAIGen.Common;
 using BerryAIGen.Database;
 using BerryAIGen.Toolkit.Common;
@@ -155,7 +155,6 @@ public class ServiceLocator
         get { return _windowService ??= new WindowService(); }
     }
 }
-
 
 
 

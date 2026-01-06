@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Civitai.Models;
+namespace BerryAIGen.Civitai.Models;
 
 public class ModelImage
 {
@@ -10,4 +10,3 @@ public class ModelImage
     public string Hash { get; set; }
     public object Meta { get; set; }
 }
-

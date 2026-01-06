@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using BerryAIGen.Common;
 using System.Windows.Input;
 using BerryAIGen.Toolkit.Common;
@@ -55,11 +55,10 @@ namespace BerryAIGen.Toolkit
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer", "https://github.com/Berry-Wahlberg/AIGenManager/blob/master/BerryAIGen.Toolkit/Tips.md");
+            System.Diagnostics.Process.Start("explorer", "https://github.com/RupertAvery/BerryAIGen.Toolkit/blob/master/BerryAIGen.Toolkit/Tips.md");
         }
     }
 }
-
 
 
 

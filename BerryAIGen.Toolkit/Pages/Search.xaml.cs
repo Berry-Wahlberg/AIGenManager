@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Civitai.Models;
+using BerryAIGen.Civitai.Models;
 using BerryAIGen.Common;
 using BerryAIGen.Toolkit.Common;
 using BerryAIGen.Common.Query;
@@ -2015,7 +2015,6 @@ namespace BerryAIGen.Toolkit.Pages
     }
 
 }
-
 
 
 

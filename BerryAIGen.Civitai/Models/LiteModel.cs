@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Civitai.Models;
+namespace BerryAIGen.Civitai.Models;
 
 public class LiteModel
 {
@@ -7,4 +7,3 @@ public class LiteModel
     public Creator Creator { get; set; }
     public List<LiteModelVersion> ModelVersions { get; set; }
 }
-

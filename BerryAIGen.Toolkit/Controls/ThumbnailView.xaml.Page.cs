@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BerryAIGen.Common;
 using System.Threading.Tasks;
 using System.Threading;
@@ -100,7 +100,7 @@ namespace BerryAIGen.Toolkit.Controls
 
         public void ReloadThumbnailsView()
         {
-            // Ensure execution on UI thread
+            // 确保在UI线程中执行
             if (!Dispatcher.CheckAccess())
             {
                 Dispatcher.Invoke(() => ReloadThumbnailsView());
@@ -182,7 +182,6 @@ namespace BerryAIGen.Toolkit.Controls
     }
 
 }
-
 
 
 

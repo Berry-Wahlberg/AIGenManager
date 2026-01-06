@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Civitai.Models;
+namespace BerryAIGen.Civitai.Models;
 
 public class Stats
 {
@@ -8,4 +8,3 @@ public class Stats
     public int RatingCount { get; set; }
     public double Rating { get; set; }
 }
-

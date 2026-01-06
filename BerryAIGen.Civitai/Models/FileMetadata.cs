@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Civitai.Models;
+namespace BerryAIGen.Civitai.Models;
 
 public class FileMetadata
 {
@@ -6,4 +6,3 @@ public class FileMetadata
     public ModelSize? Size { get; set; }
     public ModelFormat Format { get; set; }
 }
-

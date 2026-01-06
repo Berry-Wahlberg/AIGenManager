@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
 namespace BerryAIGen.Civitai.Models;
 
@@ -14,4 +14,3 @@ public enum ModelFormat
     Other,
     pt,
 }
-

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace BerryAIGen.Common;
@@ -151,4 +151,3 @@ public class Win32FileAPI
             FileOperationFlags.FOF_SILENT);
     }
 }
-

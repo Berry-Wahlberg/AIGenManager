@@ -1,4 +1,4 @@
-﻿namespace BerryAIGen.Common.Query;
+namespace BerryAIGen.Common.Query;
 
 public enum NodeComparison
 {
@@ -12,4 +12,3 @@ public enum NodeComparison
     LessThanOrEqual,
     Between
 }
-
