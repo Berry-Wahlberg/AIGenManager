@@ -1,51 +1,35 @@
-﻿# Diffusion Toolkit
+﻿# Welcome to BerryAIGen.Toolkit
 
-Are you tired of dragging your images into PNG-Info to see the metadata?  Annoyed at how slow navigating through Explorer is to view your images? Want to organize your images without having to move them around to different folders? Wish you could easily search your images metadata? 
+BerryAIGen.Toolkit is a comprehensive image metadata indexer and viewer designed specifically for AI-generated images. It provides powerful tools to help users organize, search, and manage their growing collection of AI-generated media.
 
-Diffusion Toolkit (https://github.com/Berry-Wahlberg/AIGenManager) is an image metadata-indexer and viewer for AI-generated images. It aims to help you organize, search and sort your ever-growing collection of best quality 4k masterpieces.
+## Key Features
 
-# Installation
+- **Comprehensive Metadata Extraction**: Extracts detailed PNGInfo from various AI image generation platforms
+- **Powerful Search**: Advanced search capabilities across all extracted metadata
+- **Intuitive Organization**: Ratings, tags, and albums for organizing your images
+- **Efficient Thumbnails**: Fast thumbnail generation with caching support
+- **Batch Processing**: Support for batch operations on images
+- **Multi-language Support**: Internationalization for global users
 
-### Windows
+## Getting Started
 
-* If you haven鈥檛 installed it yet, download and install the [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-* [Download the latest release](https://github.com/Berry-Wahlberg/AIGenManager/releases/latest) 
-    * Under the latest release, expand Assets and download **Diffusion.Toolkit.v1.9.0.zip**.
-* Extract all files into a folder
+1. **Select Folders**: Choose the folders containing your AI-generated images
+2. **Scan Images**: Let the application scan and index your images
+3. **Explore**: Use the search and organization features to manage your collection
 
-### Linux / MacOS
+## Need Help?
 
-An basic experimental version is available on the AvaloniaUI branch. It works, and is functional, but it is now outdated and lacks features due to some bugs I have experienced in Avalonia.  
+- Check the documentation in the `document/develop` directory
+- Visit the GitHub repository for the latest updates and issues
+- Join the community discussions for tips and support
 
-No official build is currently available, and while it can build on MacOS, getting it to run as an App can be tricky.
+## Stay Updated
 
-# Features
+To check for updates, go to **Help > Check for updates** in the application menu. You can also enable automatic update checks in the settings.
 
-* Support for many image metadata formats:
-   * AUTOMATIC1111 and A1111-compatible metadata such as
-      * Tensor.Art
-      * SDNext
-      * ComfyUI with [SD Prompt Saver Node](https://github.com/receyuki/comfyui-prompt-reader-node)
-      * Stealth-PNG (saved in Alpha Channel) https://github.com/neggles/sd-webui-stealth-pnginfo/
-   * InvokeAI (Dream/sd-metadata/invokeai_metadata)
-   * NovelAI
-   * Stable Diffusion
-   * EasyDiffusion
-   * RuinedFooocus
-   * Fooocus
-   * FooocusMRE
-   * Stable Swarm
-* Scans and indexes your images in a database for lightning-fast search
-* Search images by metadata (Prompt, seed, model, etc...)
-* Custom metadata (stored in database, not in image) 
-    * Favorite
-    * Rating (1-10)
-    * NSFW
-* Organize your images 
-    * Albums
-    * Folder View
-* Drag and Drop from Diffusion Toolkit to another app
-* Drag and Drop images onto the Preview to view them without scanning
-* Open images with External Applications
-* Localization (feel free to contribute and fix the AI-generated translations!)
+Thank you for using BerryAIGen.Toolkit!
 
+---
+
+**GitHub Repository**: https://github.com/Berry-Wahlberg/AIGenManager
+**Version**: v1.0.0
