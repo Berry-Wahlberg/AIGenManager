@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace BerryAIGen.Common;
@@ -67,3 +67,4 @@ public static class FileUtility
         return true;
     }
 }
+

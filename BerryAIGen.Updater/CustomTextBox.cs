@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace BerryAIGen.Updater;
 
@@ -23,3 +23,4 @@ public class CustomTextBox : TextBox
         base.WndProc(ref m);
     }
 }
+

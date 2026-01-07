@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models
+﻿namespace BerryAIGen.Civitai.Models
 {
     public class Model
     {
@@ -14,3 +14,4 @@ namespace BerryAIGen.Civitai.Models
         public List<ModelVersion> ModelVersions { get; set; }
     }
 }
+

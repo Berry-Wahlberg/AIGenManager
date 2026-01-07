@@ -7,7 +7,7 @@
     <UseWPF>true</UseWPF>
 	<UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>BerryAIGen-toolkit.ico</ApplicationIcon>
-    <LangVersion>14.0</LangVersion>
+    <LangVersion>latest</LangVersion>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyName>BerryAIGen.Toolkit</AssemblyName>
     <RootNamespace>BerryAIGen.Toolkit</RootNamespace>

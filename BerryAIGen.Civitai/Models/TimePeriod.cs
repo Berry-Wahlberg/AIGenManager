@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public enum TimePeriod
 {
@@ -8,3 +8,4 @@ public enum TimePeriod
     Week,
     Day
 }
+

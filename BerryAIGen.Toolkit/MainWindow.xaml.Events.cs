@@ -1,4 +1,4 @@
-﻿using BerryAIGen.Database;
+using BerryAIGen.Database;
 using BerryAIGen.Common;
 using BerryAIGen.Toolkit.Models;
 using System;
@@ -209,6 +209,11 @@ namespace BerryAIGen.Toolkit
         private void GitHubMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/Berry-Wahlberg/AIGenManager") { UseShellExecute = true });
+        }
+
+        private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            GitHubMenuItem_OnClick(sender, e);
         }
 
         private void ShowTips()
@@ -434,6 +439,7 @@ namespace BerryAIGen.Toolkit
     }
 
 }
+
 
 
 

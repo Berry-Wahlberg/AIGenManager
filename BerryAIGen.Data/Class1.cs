@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace BerryAIGen.Data
 {
@@ -7,3 +7,4 @@ namespace BerryAIGen.Data
 
     }
 }
+

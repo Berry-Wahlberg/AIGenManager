@@ -1,4 +1,4 @@
-namespace BerryAIGen.Database;
+﻿namespace BerryAIGen.Database;
 
 public enum MigrationType
 {
@@ -41,3 +41,4 @@ public class MigrateAttribute : Attribute
         MigrationType = migrationType;
     }
 }
+

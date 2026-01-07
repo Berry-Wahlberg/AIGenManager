@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using BerryAIGen.Common;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -363,6 +363,7 @@ namespace BerryAIGen.Toolkit
 
     }
 }
+
 
 
 

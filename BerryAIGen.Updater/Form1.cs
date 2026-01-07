@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO.Compression;
 using BerryAIGen.Common;
 using BerryAIGen.Github;
@@ -206,3 +206,4 @@ namespace BerryAIGen.Updater
         }
     }
 }
+

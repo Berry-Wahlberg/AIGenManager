@@ -1,4 +1,4 @@
-# What's New in v1.6.1
+﻿# What's New in v1.6.1
 
 ## Enhancements
 
@@ -13,7 +13,8 @@
 
 ## Bugfixes
 
-* Some fixes for `UNIQUE constraint failed: Image.Path`. In case you are affected, try looking at 'https://github.com/RupertAvery/DiffusionToolkit/issues/218#issuecomment-1939824894'
+* Some fixes for `UNIQUE constraint failed: Image.Path`. In case you are affected, try looking at 'https://github.com/Berry-Wahlberg/AIGenManager/issues/218#issuecomment-1939824894'
 * Fix for layout issues. If your thumbnail appear to have only one line, this should fix it.  There is also a View > Reset layout in case layout gets messed up.
 * Should fix some `Value cannot be null (Parameter 'element')` errors
+
 

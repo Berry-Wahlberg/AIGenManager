@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -229,3 +229,4 @@ public class CivitaiClient : IDisposable
     }
 
 }
+

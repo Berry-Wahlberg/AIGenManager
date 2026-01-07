@@ -1,4 +1,4 @@
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Directory = MetadataExtractor.Directory;
@@ -1589,3 +1589,4 @@ public class Metadata
         return false;
     }
 }
+

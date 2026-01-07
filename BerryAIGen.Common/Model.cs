@@ -1,4 +1,4 @@
-namespace BerryAIGen.Common;
+﻿namespace BerryAIGen.Common;
 
 public class Model
 {
@@ -14,3 +14,4 @@ public enum ImageType
     Image = 0,
     Video = 1
 }
+

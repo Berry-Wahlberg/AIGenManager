@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 
 namespace BerryAIGen.Civitai;
 
@@ -33,3 +33,4 @@ public class CivitaiRequestException : Exception
         StatusCode = statusCode;
     }
 }
+

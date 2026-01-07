@@ -1,4 +1,4 @@
-# What's New in v1.7.0
+﻿# What's New in v1.7.0
 
 After several months without any updates, here's a few that include some features users have suggested or requested. 
 

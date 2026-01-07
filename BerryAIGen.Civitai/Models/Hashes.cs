@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace BerryAIGen.Civitai.Models;
 
@@ -15,3 +15,4 @@ public class Hashes
     [JsonPropertyName("BLAKE3")]
     public string BLAKE3 { get; set; }
 }
+

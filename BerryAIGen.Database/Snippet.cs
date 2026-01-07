@@ -1,4 +1,4 @@
-using SQLite;
+﻿using SQLite;
 
 namespace BerryAIGen.Database;
 
@@ -7,3 +7,4 @@ public class Snippet {
     public int Id { get; set; }
     public string Text { get; set; }
 }
+

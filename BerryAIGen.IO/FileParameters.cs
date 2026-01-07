@@ -1,4 +1,4 @@
-using BerryAIGen.Common;
+﻿using BerryAIGen.Common;
 
 namespace BerryAIGen.IO;
 
@@ -38,3 +38,4 @@ public class FileParameters
     public string? Hash { get; set; }
     public ImageType Type { get; set; }
 }
+

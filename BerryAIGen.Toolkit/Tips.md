@@ -1,6 +1,6 @@
-# Table of Contents
+﻿# Table of Contents
 
-* [Diffusion Toolkit](#diffusion-toolkit)
+* [AIGenManager](#aigenmanager)
 * [Features](#features)
 * [Getting Started](#getting-started)
 * [Updating your images](#updating-your-images)
@@ -33,13 +33,13 @@
 * [Keyboard Shortcuts](#keyboard-shortcuts)
 * [FAQ](#faq)
 
-# Diffusion Toolkit
+# AIGenManager
 
-Diffusion Toolkit is an Image viewer and metadata (prompt) searcher for your AI generated images.
+AIGenManager is an Image viewer and metadata (prompt) searcher for your AI generated images.
 
 AI image generators embed the parameters used to generate that image in the image as metadata, or store it in a separate text file.
 
-Diffusion Toolkit scans your AI-Generated images for metadata and stores it in a local database for fast retrieval and searching.
+AIGenManager scans your AI-Generated images for metadata and stores it in a local database for fast retrieval and searching.
 
 # Features
 
@@ -81,9 +81,9 @@ On first load, you will be shown the Settings dialog.
 
 ## General Tab
 
-Diffusion Toolkit will scan a set of folders and index images found into its database.  Add the folders you want to scan into the **Diffusion Folders** list.
+AIGenManager will scan a set of folders and index images found into its database.  Add the folders you want to scan into the **Diffusion Folders** list.
 
-You can choose **Recursive** to let Diffusion Toolkit recursively scan your Diffusion Folders. This is enabled by default.
+You can choose **Recursive** to let AIGenManager recursively scan your Diffusion Folders. This is enabled by default.
 
 If you have subfolders you want to ignore from the **Diffusion Folders** list, add them to the **Excluded Folders** list.
 
@@ -95,21 +95,21 @@ You may **Check for updates on startup** to be notified if there is a new versio
 
 ## Checkpoints Tab
 
-Setting the checkpoint **Model Root** folder will allow Diffusion Toolkit to display the checkpoint filename based on the model hash found in the metadata.
+Setting the checkpoint **Model Root** folder will allow AIGenManager to display the checkpoint filename based on the model hash found in the metadata.
 
 As of mid January 2023, AUTOMATIC1111 has changed they way hashes are calculated. In order to use the new hash, you need to set the path to the **A1111 cache (cache.json)** file.
 
 ## Images Tab
 
-Diffusion Toolkit does not require you to click through folders to search for an image. Instead, you may search for a term or a parameter used in your PNGINfo and you will recieve a list of all matching images. As the number of matching images can be in the thousands or tens of thousands, the results are paged.
+AIGenManager does not require you to click through folders to search for an image. Instead, you may search for a term or a parameter used in your PNGINfo and you will recieve a list of all matching images. As the number of matching images can be in the thousands or tens of thousands, the results are paged.
 
 Here you can set the number of **Thumbnails per page**.  
 
-You can also tell Diffusion Toolkit to **Scan for new images on startup** so you don't have to click **Scan folders for new images** when you run the application.
+You can also tell AIGenManager to **Scan for new images on startup** so you don't have to click **Scan folders for new images** when you run the application.
 
 ## NSFW Tab
 
-Diffusion Toolkit can auto-tag your images based on prompt text on demand or when they are scanned in. To do this, add the list of tokens (may include spaces), one per line in the **NSFW Tags** text box, and check the option **Auto Tag NSFW**.
+AIGenManager can auto-tag your images based on prompt text on demand or when they are scanned in. To do this, add the list of tokens (may include spaces), one per line in the **NSFW Tags** text box, and check the option **Auto Tag NSFW**.
 
 ## Themes Tab
 
@@ -131,7 +131,7 @@ You will be prompted to scan your selected folders for images.
 
 # Indexing your images
 
-Diffusion Toolkit is designed to help you find your images quickly and easily using theie metadata. To do this it needs to scan your images once to read in the metadata and store it in a local database. It can typically index around 10,000 images in seconds on an SSD.
+AIGenManager is designed to help you find your images quickly and easily using theie metadata. To do this it needs to scan your images once to read in the metadata and store it in a local database. It can typically index around 10,000 images in seconds on an SSD.
 
 ## Scan folders for new images
 
@@ -143,7 +143,7 @@ To make sure your favorites and ratings are kept, use **right-click > Move** to 
 
 ## Watch folders
 
-The **Watch folders** setting will allow Diffusion Toolkit to recieve a notification everytime an image is added to your Diffusion folders.  The images will be added to the database without needing to click **Scan folders for new images**.
+The **Watch folders** setting will allow AIGenManager to recieve a notification everytime an image is added to your Diffusion folders.  The images will be added to the database without needing to click **Scan folders for new images**.
 
 This is best used when generating images via a tool or webgui.  You will only be notified when the application has focus.  Your current view will not be reloaded when this occurs to prevent from interrupting your work.
 
@@ -175,7 +175,7 @@ Click **View > Thumbnails** to select the thumbnail size.
 
 # Tagging Images
 
-You can tag your files with additional metadata (stored in the Diffusion Toolkit database) to help you organize and manage your images further.
+You can tag your files with additional metadata (stored in the AIGenManager database) to help you organize and manage your images further.
 
 ## Favorite
 
@@ -229,13 +229,13 @@ To permanently remove all images marked For Deletion, click **Edit > Empty Recyc
 
 ## Moving Images
 
-If you want to move images around in your Diffusion Folders, you should use the **Right-click > Move** command. Diffusion Toolkit tracks your Favorites, Ratings, NSFW in its own database, and is linked to the image by the path. Because of this, you should use the internal Move command so that the application can update the reference in the database.
+If you want to move images around in your Diffusion Folders, you should use the **Right-click > Move** command. AIGenManager tracks your Favorites, Ratings, NSFW in its own database, and is linked to the image by the path. Because of this, you should use the internal Move command so that the application can update the reference in the database.
 
 ## Removing Entries
 
 You way want to remove an image from the database, without deleting the file from disk. The reasons you may want to do this are:
 
-* Diffusion Toolkit generated a duplicate entry, pointing to the same file.
+* AIGenManager generated a duplicate entry, pointing to the same file.
 * You added an **Excluded Folder** (see [General](#general-tab) tab under Settings) and you wish to stop tracking images in the folder.
 
 To do this, select the image and right-click > Remove Entry or press `Ctrl-X` or `Ctrl-Del`.
@@ -245,11 +245,11 @@ To do this, select the image and right-click > Remove Entry or press `Ctrl-X` or
 
 On the right is the **Preview Pane**, where the image preview will be displayed when an thumbnail is selected.
 
-![Screenshot 2023-09-30 125622](https://github.com/RupertAvery/DiffusionToolkit/assets/1910659/6e8ab5e4-9f9a-427b-a06e-6314e532ba3d)
+![Screenshot 2023-09-30 125622](https://github.com/Berry-Wahlberg/AIGenManager/assets/1910659/6e8ab5e4-9f9a-427b-a06e-6314e532ba3d)
 
 When you rate or favorite an image, an indicator will appear in the bottom left.
 
-![Screenshot 2023-09-30 125823](https://github.com/RupertAvery/DiffusionToolkit/assets/1910659/2399569a-a96e-4b4d-9595-9f1dfeee3166)
+![Screenshot 2023-09-30 125823](https://github.com/Berry-Wahlberg/AIGenManager/assets/1910659/2399569a-a96e-4b4d-9595-9f1dfeee3166)
 
 You can set the image to automatically fit to the preview area by clicking **View > Fit to Preview**. Otherwise by default the image will be displayed at 100%, and you can Zoom and Pan the image. 
 
@@ -273,7 +273,7 @@ Zoom will be reset when you select another image.
 
 To display the prompt and other metadata associated with the image (i.e. PNGInfo) press the **eye icon** located at the bottom right of the Preview Pane, or press `i` while in the Thumbnail View.
 
-![Screenshot 2023-09-30 125805](https://github.com/RupertAvery/DiffusionToolkit/assets/1910659/0164dcac-3fe6-416e-8ce5-2e1646b0baba)
+![Screenshot 2023-09-30 125805](https://github.com/Berry-Wahlberg/AIGenManager/assets/1910659/0164dcac-3fe6-416e-8ce5-2e1646b0baba)
 
 ## Popout
 
@@ -305,7 +305,7 @@ Currently only indexed images will be displayed in Folder view.  If you navigate
 
 You can still use the search function to filter images in Folder view.
 
-If coming from a pre-1.0 version of Diffusion Toolkit, you must Rebuild Images to update the folder information. 
+If coming from a pre-1.0 version of AIGenManager, you must Rebuild Images to update the folder information. 
 
 # Albums
 
@@ -467,7 +467,7 @@ Wildcards (`?`, `*`) are supported
 
 Some tools don't store the model name in metadata by default.
 
-Diffusion Toolkit will try to perform a hash lookup using the information stored in the AUTOMATIC1111 `cache.json` file if it exists.  It will attempt to lookup the name (partial matches allowed), and take the hash of any matching models, and use a hash query to search for the images. Both old hash algorithm and the newer SHA256 hash are supported.
+AIGenManager will try to perform a hash lookup using the information stored in the AUTOMATIC1111 `cache.json` file if it exists.  It will attempt to lookup the name (partial matches allowed), and take the hash of any matching models, and use a hash query to search for the images. Both old hash algorithm and the newer SHA256 hash are supported.
 
 Note that the `cache.json` file is updated on the fly by AUTOMATIC1111. It computes model hashes for new models it has never loaded before. Model hashes are computed the when you switch to them in the UI.
 
@@ -493,19 +493,19 @@ You can search for images that used a hypernetwork, and specify the strength use
 
 ## Favorites
 
-Favorite is a Diffusion Toolkit metadata with a value of true or false, entered by the user. See [Favorites](#favorites)
+Favorite is a AIGenManager metadata with a value of true or false, entered by the user. See [Favorites](#favorites)
 
 * `favorite: [true|false]`
 
 ## Rating
 
-Rating is a Diffusion Toolkit metadata with a value of 1-5, entered by the user. See [Rating](#rating)
+Rating is a AIGenManager metadata with a value of 1-5, entered by the user. See [Rating](#rating)
 
 * `rating: [<|>|<=|>=|<>] <number>`
 
 ## NSFW
 
-NSFW is a Diffusion Toolkit metadata with a value of true or false, entered by the user. See [NSFW Tag](#nsfw-tag). 
+NSFW is a AIGenManager metadata with a value of true or false, entered by the user. See [NSFW Tag](#nsfw-tag). 
 
 If you specify this term explicitly, it will override the **Hide NSFW from Results** option.
 
@@ -520,13 +520,13 @@ This filter will show images that do not have metadata.
 
 ## For Deletion
 
-**For Deletion** is a Diffusion Toolkit metadata with a value of true or false, entered by the user. See [Deleting](#deleting)
+**For Deletion** is a AIGenManager metadata with a value of true or false, entered by the user. See [Deleting](#deleting)
 
 * `delete: [true|false]` - Filters by files marked for deletion
 
 ## Date Created
 
- **Date Created** is a Diffusion Toolkit metadata taken from the image file's attributes during scanning.
+ **Date Created** is a AIGenManager metadata taken from the image file's attributes during scanning.
 
 Allows you to search by the file's created date
 
@@ -546,7 +546,7 @@ Allows you to search by the file's created date
 
 ## Path
  
- **Path** is a Diffusion Toolkit metadata taken from the image file's attributes during scanning.
+ **Path** is a AIGenManager metadata taken from the image file's attributes during scanning.
 
 You can use wildcards (`?`, `*`), or the criteria `starts with`, `contains`, or `ends with`. 
 
@@ -577,7 +577,7 @@ Path with wildcards will return matches in subfolders. If you want to search a s
 
 ## Folder
  
- **Folder** is a Diffusion Toolkit metadata taken from the image file's attributes during scanning.  Searching by folder limits your result to a specific folder, unlike path, which will include images in subfolders.
+ **Folder** is a AIGenManager metadata taken from the image file's attributes during scanning.  Searching by folder limits your result to a specific folder, unlike path, which will include images in subfolders.
 
 * `folder: <folder>`  
 
@@ -649,16 +649,16 @@ With the Preview Pane visible, press I in the thumbnail view or with the Preview
 
 ## When do I need to Rebuild Images?
 
-You only need to Rebuild Images if a new version of Diffusion Toolkit comes out with support for metadata that exists in your existing images.
+You only need to Rebuild Images if a new version of AIGenManager comes out with support for metadata that exists in your existing images.
 
 ## Can I move my images to a different folder?
 
-I you want to move your images to a different folder, but still within a Diffusion folder, you should use the **right-click > Move** command. This allows Diffusion Toolkit to handle the moving of images, and know to keep all the Diffusion Toolkit metadata (Favorites, Rating, NSFW) intact while moving.
+I you want to move your images to a different folder, but still within a Diffusion folder, you should use the **right-click > Move** command. This allows AIGenManager to handle the moving of images, and know to keep all the AIGenManager metadata (Favorites, Rating, NSFW) intact while moving.
 
-If you use Explorer or some other application to move the files, but still under the Diffusion folders, when you Rescan Folders or Rebuild Images Diffusion Toolkit will detect that the images have been removed, then will detect new files added. You will lose any Favorites, Ratings or other Toolkit-specific information. 
+If you use Explorer or some other application to move the files, but still under the Diffusion folders, when you Rescan Folders or Rebuild Images AIGenManager will detect that the images have been removed, then will detect new files added. You will lose any Favorites, Ratings or other Toolkit-specific information. 
 
 ## Where are my settings and database stored?
 
-Your settings and the database are stored in `%APPDATA%\DiffusionToolkit`.
+Your settings and the database are stored in `%APPDATA%\AIGenManager`.
 
-If you delete the database, you will lose all Diffusion Toolkit information such as Favorites and Ratings.
+If you delete the database, you will lose all AIGenManager information such as Favorites and Ratings.

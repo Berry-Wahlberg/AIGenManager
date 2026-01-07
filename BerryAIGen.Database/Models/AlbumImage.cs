@@ -1,4 +1,4 @@
-using SQLite;
+﻿using SQLite;
 
 namespace BerryAIGen.Database.Models;
 
@@ -9,3 +9,4 @@ public class AlbumImage
     [Indexed(Name = "IDX_AlbumImage", Order = 2, Unique = true)]
     public int ImageId { get; set; }
 }
+

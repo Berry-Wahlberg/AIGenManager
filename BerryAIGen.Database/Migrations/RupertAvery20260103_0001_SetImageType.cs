@@ -1,4 +1,4 @@
-using BerryAIGen.Common;
+﻿using BerryAIGen.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,3 +21,4 @@ namespace BerryAIGen.Database
         }
     }
 }
+

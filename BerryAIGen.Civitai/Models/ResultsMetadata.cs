@@ -1,4 +1,4 @@
-namespace BerryAIGen.Civitai.Models;
+﻿namespace BerryAIGen.Civitai.Models;
 
 public class ResultsMetadata
 {
@@ -8,3 +8,4 @@ public class ResultsMetadata
     public int TotalPages { get; set; }
     public string NextPage { get; set; }
 }
+
