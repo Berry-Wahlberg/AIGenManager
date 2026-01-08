@@ -4,13 +4,13 @@
     "imageFile": ""
   },
   "name": "BerryAIGen.Electron",
-  "author": "",
-  "singleInstance": false,
+  "author": "BerryAIGen Team",
+  "singleInstance": true,
   "environment": "Production",
   "build": {
-    "appId": "com.BerryAIGen.Electron.app",
-    "productName": "BerryAIGen.Electron",
-    "copyright": "Copyright © 2020",
+    "appId": "com.BerryAIGen.Electron",
+    "productName": "BerryAIGen Toolkit",
+    "copyright": "Copyright © 2026 BerryAIGen",
     "buildVersion": "1.0.0",
     "compression": "maximum",
     "directories": {
