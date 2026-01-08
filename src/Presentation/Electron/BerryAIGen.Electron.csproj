@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ElectronNETCoreVersion>23.6.2</ElectronNETCoreVersion>
+    <UseElectronNET>true</UseElectronNET>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ElectronNET.API" Version="23.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\BerryAIGen.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Database\BerryAIGen.Database.csproj" />
+    <ProjectReference Include="..\..\Data\IO\BerryAIGen.IO.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Civitai\BerryAIGen.Civitai.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Github\BerryAIGen.Github.csproj" />
+  </ItemGroup>
+
+</Project>

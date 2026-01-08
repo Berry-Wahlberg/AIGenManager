@@ -1,0 +1,90 @@
+@page
+@model IndexModel
+@{    
+    ViewData["Title"] = "Search - AIGenManager";
+}
+
+<!-- Search Section -->
+<div class="search-section">
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-input-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search images..." aria-label="Search images">
+            <button id="search-btn" class="search-btn" aria-label="Search">
+                <span class="search-icon">🔍</span>
+            </button>
+        </div>
+        <div class="search-filters">
+            <button class="filter-btn" id="filter-btn" aria-label="Open Filters">
+                <span class="filter-icon">⚙️</span>
+                <span class="filter-text">Filters</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Results Header -->
+    <div class="results-header">
+        <div class="results-info">
+            <span id="results-count" class="results-count">0 images</span>
+            <span id="search-time" class="search-time">(0 ms)</span>
+        </div>
+        <div class="view-options">
+            <div class="view-mode-buttons">
+                <button class="view-btn active" id="grid-view-btn" aria-label="Grid View">
+                    <span class="view-icon">📋</span>
+                </button>
+                <button class="view-btn" id="list-view-btn" aria-label="List View">
+                    <span class="view-icon">📄</span>
+                </button>
+            </div>
+            <div class="thumbnail-size">
+                <label for="thumbnail-size-slider" class="thumbnail-size-label">Thumbnail Size:</label>
+                <input type="range" id="thumbnail-size-slider" min="64" max="256" value="128" class="thumbnail-size-slider">
+                <span id="thumbnail-size-value" class="thumbnail-size-value">128px</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters Panel -->
+    <div class="filters-panel" id="filters-panel">
+        <div class="filters-header">
+            <h3>Search Filters</h3>
+            <button id="close-filters-btn" class="close-btn" aria-label="Close Filters">
+                <span class="close-icon">✕</span>
+            </button>
+        </div>
+        <div class="filters-content">
+            <!-- Filter controls will be dynamically loaded here -->
+            <p>Filter functionality coming soon...</p>
+        </div>
+    </div>
+
+    <!-- Thumbnail Grid -->
+    <div class="thumbnail-grid" id="thumbnail-grid">
+        <!-- Thumbnails will be dynamically loaded here -->
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading images...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Preview Panel -->
+<div class="preview-panel" id="preview-panel">
+    <div class="preview-header">
+        <h3>Preview</h3>
+        <button id="close-preview-btn" class="close-btn" aria-label="Close Preview">
+            <span class="close-icon">✕</span>
+        </button>
+    </div>
+    <div class="preview-content">
+        <div class="preview-placeholder">
+            <p>No image selected</p>
+            <p>Click on an image to preview</p>
+        </div>
+    </div>
+</div>
+
+<!-- Include the search script -->
+<script src="~/js/search.js"></script>
+<script src="~/js/navigation.js"></script>

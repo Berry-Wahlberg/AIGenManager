@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AIGenManager</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="app-body">
+    <div class="app-container">
+        <!-- Side Navigation -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="app-logo">
+                    <h2>AIGenManager</h2>
+                </div>
+                <button id="toggle-sidebar" class="toggle-btn" aria-label="Toggle Sidebar">
+                    <span class="toggle-icon">☰</span>
+                </button>
+            </div>
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <h3 class="section-header">Main</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link active">
+                                <span class="nav-icon">🔍</span>
+                                <span class="nav-text">Search</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Models" class="nav-link">
+                                <span class="nav-icon">📦</span>
+                                <span class="nav-text">Models</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Prompts" class="nav-link">
+                                <span class="nav-icon">💬</span>
+                                <span class="nav-text">Prompts</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3 class="section-header">Tools</h3>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="/Settings" class="nav-link">
+                                <span class="nav-icon">⚙️</span>
+                                <span class="nav-text">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Toolbar -->
+            <header class="toolbar">
+                <div class="toolbar-left">
+                    <div class="breadcrumb">
+                        <span>Home</span>
+                    </div>
+                </div>
+                <div class="toolbar-right">
+                    <button class="toolbar-btn" aria-label="Refresh" id="refresh-btn">
+                        <span class="toolbar-icon">🔄</span>
+                    </button>
+                    <button class="toolbar-btn" aria-label="Settings" id="settings-btn">
+                        <span class="toolbar-icon">⚙️</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/navigation.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

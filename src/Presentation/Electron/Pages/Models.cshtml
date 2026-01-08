@@ -1,0 +1,116 @@
+@page "/Models"
+@model ModelsModel
+@{    
+    ViewData["Title"] = "Models - AIGenManager";
+}
+
+<!-- Models Section -->
+<div class="models-section">
+    <!-- Models Header -->
+    <div class="models-header">
+        <div class="models-title">
+            <h2>Models</h2>
+            <p>Manage and view your AI models</p>
+        </div>
+        <div class="models-actions">
+            <button class="action-btn" id="refresh-models-btn" aria-label="Refresh Models">
+                <span class="action-icon">🔄</span>
+                <span class="action-text">Refresh</span>
+            </button>
+            <button class="action-btn" id="add-model-btn" aria-label="Add Model">
+                <span class="action-icon">➕</span>
+                <span class="action-text">Add Model</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Models Content -->
+    <div class="models-content">
+        <!-- Models Sidebar -->
+        <div class="models-sidebar">
+            <div class="models-filter">
+                <h3>Filter Models</h3>
+                <div class="filter-group">
+                    <label for="model-type-filter" class="filter-label">Model Type:</label>
+                    <select id="model-type-filter" class="filter-select">
+                        <option value="">All Types</option>
+                        <option value="Checkpoint">Checkpoint</option>
+                        <option value="LoRA">LoRA</option>
+                        <option value="TextualInversion">Textual Inversion</option>
+                        <option value="VAE">VAE</option>
+                        <option value="ControlNet">ControlNet</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="model-sort-filter" class="filter-label">Sort By:</label>
+                    <select id="model-sort-filter" class="filter-select">
+                        <option value="name">Name</option>
+                        <option value="size">Size</option>
+                        <option value="date">Date Added</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Models Grid -->
+        <div class="models-grid">
+            <div class="models-grid-header">
+                <div class="grid-column" style="width: 200px;">Name</div>
+                <div class="grid-column" style="width: 120px;">Type</div>
+                <div class="grid-column" style="width: 100px;">Size</div>
+                <div class="grid-column" style="width: 150px;">Last Modified</div>
+                <div class="grid-column" style="width: 200px;">Path</div>
+                <div class="grid-column" style="width: 100px;">Actions</div>
+            </div>
+            <div class="models-grid-body" id="models-grid-body">
+                <!-- Models will be dynamically loaded here -->
+                <div class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading models...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Model Modal -->
+<div class="modal" id="add-model-modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Model</h3>
+            <button class="close-btn" id="close-add-model-modal">✕</button>
+        </div>
+        <div class="modal-body">
+            <form id="add-model-form">
+                <div class="form-group">
+                    <label for="model-name">Model Name:</label>
+                    <input type="text" id="model-name" class="form-input" placeholder="Enter model name">
+                </div>
+                <div class="form-group">
+                    <label for="model-path">Model Path:</label>
+                    <div class="path-input">
+                        <input type="text" id="model-path" class="form-input" placeholder="Select model file">
+                        <button type="button" id="browse-model-path" class="browse-btn">...</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="model-type">Model Type:</label>
+                    <select id="model-type" class="form-select">
+                        <option value="Checkpoint">Checkpoint</option>
+                        <option value="LoRA">LoRA</option>
+                        <option value="TextualInversion">Textual Inversion</option>
+                        <option value="VAE">VAE</option>
+                        <option value="ControlNet">ControlNet</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="cancel-btn" id="cancel-add-model">Cancel</button>
+            <button class="save-btn" id="save-add-model">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- Include models script -->
+<script src="~/js/models.js"></script>

@@ -1,0 +1,185 @@
+@page "/Settings"
+@model SettingsModel
+@{    
+    ViewData["Title"] = "Settings - AIGenManager";
+}
+
+<!-- Settings Section -->
+<div class="settings-section">
+    <!-- Settings Header -->
+    <div class="settings-header">
+        <div class="settings-title">
+            <h2>Settings</h2>
+            <p>Configure your application settings</p>
+        </div>
+        <div class="settings-actions">
+            <button class="action-btn" id="save-settings-btn" aria-label="Save Settings">
+                <span class="action-icon">💾</span>
+                <span class="action-text">Save</span>
+            </button>
+            <button class="action-btn" id="reset-settings-btn" aria-label="Reset Settings">
+                <span class="action-icon">🔄</span>
+                <span class="action-text">Reset</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Settings Content -->
+    <div class="settings-content">
+        <!-- Settings Navigation -->
+        <div class="settings-nav">
+            <ul class="settings-nav-list">
+                <li class="settings-nav-item active" data-section="general">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">General</span>
+                </li>
+                <li class="settings-nav-item" data-section="folders">
+                    <span class="nav-icon">📁</span>
+                    <span class="nav-text">Folders</span>
+                </li>
+                <li class="settings-nav-item" data-section="thumbnails">
+                    <span class="nav-icon">🖼️</span>
+                    <span class="nav-text">Thumbnails</span>
+                </li>
+                <li class="settings-nav-item" data-section="search">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-text">Search</span>
+                </li>
+                <li class="settings-nav-item" data-section="updates">
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">Updates</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Settings Sections -->
+        <div class="settings-sections">
+            <!-- General Settings -->
+            <div class="settings-section active" id="general">
+                <h3>General Settings</h3>
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label for="language-select" class="setting-label">Language:</label>
+                        <select id="language-select" class="setting-select">
+                            <option value="en-US">English</option>
+                            <option value="zh-CN">Chinese (Simplified)</option>
+                            <option value="zh-TW">Chinese (Traditional)</option>
+                            <option value="ja-JP">Japanese</option>
+                            <option value="fr-FR">French</option>
+                            <option value="de-DE">German</option>
+                            <option value="es-ES">Spanish</option>
+                            <option value="ru-RU">Russian</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="theme-select" class="setting-label">Theme:</label>
+                        <select id="theme-select" class="setting-select">
+                            <option value="system">System Default</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="show-notifications" class="setting-checkbox">
+                        <label for="show-notifications" class="setting-label checkbox-label">Show notifications</label>
+                    </div>
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="confirm-deletion" class="setting-checkbox">
+                        <label for="confirm-deletion" class="setting-label checkbox-label">Confirm file deletion</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Folders Settings -->
+            <div class="settings-section" id="folders">
+                <h3>Folder Settings</h3>
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label for="model-root-path" class="setting-label">Model Root Path:</label>
+                        <div class="path-input">
+                            <input type="text" id="model-root-path" class="setting-input" placeholder="Select model root folder">
+                            <button type="button" id="browse-model-root" class="browse-btn">...</button>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <h4>Watched Folders</h4>
+                        <div class="watched-folders-list" id="watched-folders-list">
+                            <!-- Watched folders will be dynamically loaded here -->
+                        </div>
+                        <button class="action-btn small" id="add-watched-folder" aria-label="Add Watched Folder">
+                            <span class="action-icon">➕</span>
+                            <span class="action-text">Add Folder</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thumbnails Settings -->
+            <div class="settings-section" id="thumbnails">
+                <h3>Thumbnail Settings</h3>
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label for="thumbnail-size" class="setting-label">Default Thumbnail Size:</label>
+                        <div class="range-input-group">
+                            <input type="range" id="thumbnail-size" min="64" max="256" value="128" class="setting-range">
+                            <span id="thumbnail-size-value" class="range-value">128px</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="page-size" class="setting-label">Page Size:</label>
+                        <select id="page-size" class="setting-select">
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                        </select>
+                    </div>
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="show-filenames" class="setting-checkbox">
+                        <label for="show-filenames" class="setting-label checkbox-label">Show filenames under thumbnails</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Settings -->
+            <div class="settings-section" id="search">
+                <h3>Search Settings</h3>
+                <div class="settings-group">
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="hide-nsfw" class="setting-checkbox">
+                        <label for="hide-nsfw" class="setting-label checkbox-label">Hide NSFW content</label>
+                    </div>
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="hide-deleted" class="setting-checkbox">
+                        <label for="hide-deleted" class="setting-label checkbox-label">Hide deleted images</label>
+                    </div>
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="hide-unavailable" class="setting-checkbox">
+                        <label for="hide-unavailable" class="setting-label checkbox-label">Hide unavailable files</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updates Settings -->
+            <div class="settings-section" id="updates">
+                <h3>Update Settings</h3>
+                <div class="settings-group">
+                    <div class="setting-item checkbox-item">
+                        <input type="checkbox" id="check-updates" class="setting-checkbox">
+                        <label for="check-updates" class="setting-label checkbox-label">Check for updates on startup</label>
+                    </div>
+                    <div class="setting-item">
+                        <button class="action-btn" id="check-updates-now" aria-label="Check for Updates Now">
+                            <span class="action-icon">🔍</span>
+                            <span class="action-text">Check for Updates Now</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include settings script -->
+<script src="~/js/settings.js"></script>

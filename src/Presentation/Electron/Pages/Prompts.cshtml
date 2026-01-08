@@ -1,0 +1,106 @@
+@page "/Prompts"
+@model PromptsModel
+@{    
+    ViewData["Title"] = "Prompts - AIGenManager";
+}
+
+<!-- Prompts Section -->
+<div class="prompts-section">
+    <!-- Prompts Header -->
+    <div class="prompts-header">
+        <div class="prompts-title">
+            <h2>Prompts</h2>
+            <p>Manage and reuse your prompts</p>
+        </div>
+        <div class="prompts-actions">
+            <button class="action-btn" id="refresh-prompts-btn" aria-label="Refresh Prompts">
+                <span class="action-icon">🔄</span>
+                <span class="action-text">Refresh</span>
+            </button>
+            <button class="action-btn" id="add-prompt-btn" aria-label="Add Prompt">
+                <span class="action-icon">➕</span>
+                <span class="action-text">Add Prompt</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Prompts Content -->
+    <div class="prompts-content">
+        <!-- Prompts Sidebar -->
+        <div class="prompts-sidebar">
+            <div class="prompts-filter">
+                <h3>Filter Prompts</h3>
+                <div class="filter-group">
+                    <label for="prompt-type-filter" class="filter-label">Prompt Type:</label>
+                    <select id="prompt-type-filter" class="filter-select">
+                        <option value="">All Types</option>
+                        <option value="positive">Positive</option>
+                        <option value="negative">Negative</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="prompt-sort-filter" class="filter-label">Sort By:</label>
+                    <select id="prompt-sort-filter" class="filter-select">
+                        <option value="name">Name</option>
+                        <option value="usage">Usage Count</option>
+                        <option value="date">Date Added</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input type="text" id="prompt-search" class="filter-input" placeholder="Search prompts..." aria-label="Search prompts">
+                </div>
+            </div>
+        </div>
+
+        <!-- Prompts Grid -->
+        <div class="prompts-grid" id="prompts-grid">
+            <!-- Prompts will be dynamically loaded here -->
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading prompts...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Prompt Modal -->
+<div class="modal" id="add-prompt-modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Prompt</h3>
+            <button class="close-btn" id="close-add-prompt-modal">✕</button>
+        </div>
+        <div class="modal-body">
+            <form id="add-prompt-form">
+                <div class="form-group">
+                    <label for="prompt-name">Prompt Name:</label>
+                    <input type="text" id="prompt-name" class="form-input" placeholder="Enter prompt name">
+                </div>
+                <div class="form-group">
+                    <label for="prompt-type" class="filter-label">Prompt Type:</label>
+                    <select id="prompt-type" class="form-select">
+                        <option value="positive">Positive</option>
+                        <option value="negative">Negative</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="positive-prompt">Positive Prompt:</label>
+                    <textarea id="positive-prompt" class="form-textarea" rows="5" placeholder="Enter positive prompt..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="negative-prompt">Negative Prompt:</label>
+                    <textarea id="negative-prompt" class="form-textarea" rows="5" placeholder="Enter negative prompt..."></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="cancel-btn" id="cancel-add-prompt">Cancel</button>
+            <button class="save-btn" id="save-add-prompt">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- Include prompts script -->
+<script src="~/js/prompts.js"></script>
