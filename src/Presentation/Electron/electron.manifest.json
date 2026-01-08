@@ -11,7 +11,7 @@
     "appId": "com.BerryAIGen.Electron",
     "productName": "BerryAIGen Toolkit",
     "copyright": "Copyright © 2026 BerryAIGen",
-    "buildVersion": "1.0.0",
+    "buildVersion": "2.0.0",
     "compression": "maximum",
     "directories": {
       "output": "../../../bin/Desktop"

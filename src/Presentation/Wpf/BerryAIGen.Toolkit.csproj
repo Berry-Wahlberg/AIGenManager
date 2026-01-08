@@ -11,6 +11,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyName>BerryAIGen.Toolkit</AssemblyName>
     <RootNamespace>BerryAIGen.Toolkit</RootNamespace>
+    <!-- Version information -->
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
