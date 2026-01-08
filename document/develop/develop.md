@@ -340,11 +340,62 @@ The Electron.NET architecture follows a similar pattern to the WPF implementatio
 3. **Launch Electron**: `electronize start` (requires Node.js and ElectronNET.CLI)
 4. **Test**: `dotnet test` for unit tests
 
-### 6.7 Future Enhancements
+### 6.7 Double-Click Launch Functionality
+
+The Electron.NET implementation now supports double-click launch functionality, allowing users to start the application directly by double-clicking the executable file, without any command-line operations.
+
+#### 6.7.1 Configuration Requirements
+
+To enable double-click launch functionality, the following configuration is required:
+
+1. **electron.manifest.json** - Updated with proper packaging settings:
+   - `appId`: Unique identifier for the application
+   - `productName`: User-friendly application name
+   - `copyright`: Copyright information
+   - `singleInstance`: Set to true to prevent multiple instances
+   - `win`: Windows-specific settings including icon, publisher, and target
+
+2. **Program.cs** - Enhanced with robust error handling and improved Electron window initialization:
+   - Proper error handling for Electron window creation
+   - Enhanced core services initialization
+   - Application exit management
+   - Detailed logging for debugging
+
+#### 6.7.2 Build Process
+
+To create a double-click executable:
+
+1. **Build Command**: Use the build-electron-release.ps1 script for comprehensive packaging:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File build-electron-release.ps1
+   ```
+
+2. **Electronize Build**: The script internally uses electronize for packaging:
+   ```bash
+   electronize build /target win
+   ```
+
+3. **Output Location**: The final executable is located in the specified output directory (default: `bin/Desktop`)
+
+#### 6.7.3 Usage Instructions
+
+For end users:
+
+1. **Installation**: Extract the release package to a desired location
+2. **Launch**: Double-click the `BerryAIGen.Electron.exe` file to start the application
+3. **User Experience**: The application opens directly with the main window, providing a user-friendly interface for non-technical users
+
+#### 6.7.4 Technical Details
+
+- **Single File Packaging**: The application is packaged as a single executable file for easy distribution
+- **Self-Contained**: Includes all necessary dependencies, no external requirements
+- **User-Friendly**: Intuitive navigation with clear visual feedback
+- **Robust Error Handling**: Graceful handling of initialization errors with user-friendly error messages
+
+### 6.8 Future Enhancements
 
 - Implement full feature parity with WPF implementation
 - Add multi-language support for Electron UI
-- Implement theme support (light/dark/system)
 - Enhance performance with web workers for background tasks
 - Add support for custom CSS theming
 
