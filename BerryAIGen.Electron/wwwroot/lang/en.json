@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "title": "Navigation",
+    "folders": "Folders",
+    "search": "Search",
+    "favorites": "Favorites",
+    "trash": "Trash",
+    "settings": "Settings"
+  },
+  "toolbar": {
+    "main_content": "Main Content Area",
+    "zoom": "Zoom",
+    "more_options": "More Options"
+  },
+  "content": {
+    "welcome": "Welcome to AIGenManager",
+    "description": "This is the main content area. Add your application content here."
+  },
+  "buttons": {
+    "toggle_navigation": "Toggle Navigation",
+    "zoom": "Zoom"
+  }
+}

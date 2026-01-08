@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BerryAIGen.Common;
 using System.Collections.Generic;
 using BerryAIGen.Database;
@@ -19,7 +19,8 @@ public class MainModel : BaseNotify
     private bool _isPreviewVisible;
     private ObservableCollection<ImageEntry>? _selectedImages;
     private ObservableCollection<FolderViewModel> _folders;
-
+    private double _sidebarWidth = 200;
+    private double _customExpandedWidth = 200;
 
     private ICommand _showSettingsCommand;
 
@@ -728,6 +729,27 @@ public class MainModel : BaseNotify
         set => SetField(ref field, value);
     }
 
+    public double SidebarWidth
+    {
+        get => _sidebarWidth;
+        set
+        {
+            if (SetField(ref _sidebarWidth, value))
+            {
+                // Save custom width when expanded (greater than collapsed state)
+                if (value > 50)
+                {
+                    _customExpandedWidth = value;
+                }
+            }
+        }
+    }
+    
+    public double CustomExpandedWidth
+    {
+        get => _customExpandedWidth;
+        set => SetField(ref _customExpandedWidth, value);
+    }
 
     public bool ShowFilenames
     {

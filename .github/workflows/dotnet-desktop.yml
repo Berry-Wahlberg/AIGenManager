@@ -27,11 +27,12 @@ jobs:
 
     # Environment variables (project-specific paths - update as needed)
     env:
-      Solution_Name: AIGenManager.sln                # Core solution filename (verify actual name in repo)
-      Solution_Directory: BerryAIGen.Toolkit         # Subdirectory containing the solution file
+      Solution_Name: BerryAIGen.sln                  # Core solution filename
+      Solution_Directory: ''                         # Solution file is in project root
       Test_Project_Path: ''                          # Leave empty if no test projects exist
       Wap_Project_Directory: ''                      # Leave empty if no WAP packaging project
       Wap_Project_Path: ''                           # Path to WAP project (e.g., AIGenManager.Package/AIGenManager.Package.wapproj)
+      Warning_As_Errors: true                        # Treat warnings as errors for critical builds
 
     steps:
     - name: Checkout repository
@@ -61,8 +62,12 @@ jobs:
     # Restore solution dependencies (NuGet packages + RuntimeIdentifiers)
     - name: Restore solution dependencies
       run: |
-        # Combine solution directory and filename for full path
-        $solutionFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Solution_Name
+        # Set solution path based on directory (if empty, use root)
+        if ([string]::IsNullOrEmpty($env:Solution_Directory)) {
+            $solutionFullPath = $env:Solution_Name
+        } else {
+            $solutionFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Solution_Name
+        }
         
         # Validate solution file exists before restore
         if (-not (Test-Path $solutionFullPath)) {
@@ -74,6 +79,33 @@ jobs:
         msbuild $solutionFullPath /t:Restore `
           /p:Configuration=${{ matrix.configuration }} `
           /p:Platform=${{ matrix.platform }} `
+          /m # Enable multi-processor build
+      continue-on-error: false
+    
+    # Build the solution with warning monitoring
+    - name: Build solution with warning monitoring
+      run: |
+        # Set solution path based on directory (if empty, use root)
+        if ([string]::IsNullOrEmpty($env:Solution_Directory)) {
+            $solutionFullPath = $env:Solution_Name
+        } else {
+            $solutionFullPath = Join-Path -Path $env:Solution_Directory -ChildPath $env:Solution_Name
+        }
+        
+        # Define warning configuration based on environment variable
+        $warningParams = if ($env:Warning_As_Errors -eq $true -and '${{ matrix.configuration }}' -eq 'Release') {
+            '/p:TreatWarningsAsErrors=true'
+        } else {
+            '/p:TreatWarningsAsErrors=false /p:WarningLevel=4'
+        }
+        
+        # Build with warning monitoring and detailed logging
+        msbuild $solutionFullPath `
+          /t:Build `
+          /p:Configuration=${{ matrix.configuration }} `
+          /p:Platform=${{ matrix.platform }} `
+          $warningParams `
+          /v:detailed `
           /m # Enable multi-processor build
       continue-on-error: false
 

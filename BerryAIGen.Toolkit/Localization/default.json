@@ -420,5 +420,16 @@
   "QueryBar.Help.ToolTip": "Search Help",
   "RootFolders.WatchForUpdates": "Watch for updates",
   "RootFolders.ScanRecursively": "Scan recursively",
-  "RootFolders.Count": "{0:n0} images"
+  "RootFolders.Count": "{0:n0} images",
+  "Navigation.Section.Main": "Main",
+  "Navigation.Section.Tools": "Tools",
+  "Navigation.Item.Folders": "Folders",
+  "Navigation.Item.Search": "Search",
+  "Navigation.Item.Favorites": "Favorites",
+  "Navigation.Item.Trash": "Trash",
+  "Navigation.Item.Prompts": "Prompts",
+  "Navigation.Item.Models": "Models",
+  "Navigation.Item.Settings": "Settings",
+  "Navigation.Item.Rescan": "Rescan",
+  "Navigation.Section.Navigation": "Navigation"
 }

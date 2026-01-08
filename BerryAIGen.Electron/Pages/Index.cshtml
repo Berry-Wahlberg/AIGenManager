@@ -1,0 +1,78 @@
+@page
+@model IndexModel
+@{    
+    ViewData["Title"] = "Home page";
+}
+
+<div class="app-container">
+    <!-- Side Navigation -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3 data-i18n="navigation.title">Navigation</h3>
+            <button id="toggle-btn" class="toggle-btn" aria-label="Toggle Navigation" data-i18n="buttons.toggle_navigation">
+                <span class="toggle-icon">☰</span>
+            </button>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon">📁</span>
+                    <span class="nav-text" data-i18n="navigation.folders">Folders</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-text" data-i18n="navigation.search">Search</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon">❤️</span>
+                    <span class="nav-text" data-i18n="navigation.favorites">Favorites</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon">🗑️</span>
+                    <span class="nav-text" data-i18n="navigation.trash">Trash</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text" data-i18n="navigation.settings">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Toolbar -->
+        <header class="toolbar">
+            <div class="toolbar-left">
+                <h1 data-i18n="toolbar.main_content">Main Content Area</h1>
+            </div>
+            <div class="toolbar-right">
+                <button id="zoom-btn" class="zoom-btn" aria-label="Zoom" data-i18n="buttons.zoom">
+                    <span class="zoom-icon">🔍</span>
+                </button>
+                <button class="toolbar-btn" aria-label="More Options" data-i18n="toolbar.more_options">
+                    <span class="toolbar-icon">⋮</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="content">
+            <h2 data-i18n="content.welcome">Welcome to AIGenManager</h2>
+            <p data-i18n="content.description">This is the main content area. Add your application content here.</p>
+        </div>
+    </main>
+</div>
+
+<!-- Include the navigation collapse script -->
+<script src="~/js/navigation.js"></script>
+<!-- Include the localization script -->
+<script src="~/js/localization.js"></script>

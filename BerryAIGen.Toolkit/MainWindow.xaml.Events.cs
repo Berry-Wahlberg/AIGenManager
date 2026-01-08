@@ -252,6 +252,25 @@ namespace BerryAIGen.Toolkit
             _settings.WindowSize = e.NewSize;
             _settings.Top = this.Top;
             _settings.Left = this.Left;
+            
+            // Automatic folding logic based on window width
+            const double threshold = 800;
+            const double collapsedWidth = 50;
+            
+            if (e.NewSize.Width < threshold && _model.SidebarWidth > collapsedWidth)
+            {
+                // Collapse sidebar when window is too narrow
+                double widthDifference = _model.SidebarWidth - collapsedWidth;
+                _model.SidebarWidth = collapsedWidth;
+                this.Width -= widthDifference;
+            }
+            else if (e.NewSize.Width >= threshold && _model.SidebarWidth == collapsedWidth)
+            {
+                // Expand sidebar when window is wide enough
+                double widthDifference = _model.CustomExpandedWidth - collapsedWidth;
+                _model.SidebarWidth = _model.CustomExpandedWidth;
+                this.Width += widthDifference;
+            }
         }
 
         private void OnLocationChanged(object? sender, EventArgs e)

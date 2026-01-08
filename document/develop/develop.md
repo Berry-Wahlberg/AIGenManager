@@ -1,4 +1,4 @@
-﻿# BerryAIGen.Toolkit - Technical Development Documentation
+# BerryAIGen.Toolkit - Technical Development Documentation
 
 ## 1. Overview
 
@@ -25,12 +25,12 @@ The vision of BerryAIGen.Toolkit is to create a user-friendly, performant, and e
 
 ### 2.1 System Architecture
 
-The project follows a modular architecture with clear separation of concerns:
+The project follows a modular architecture with clear separation of concerns, supporting both WPF and Electron.NET presentation layers:
 
 ```
 +-----------------------------------------------------------------------+
 |                         Presentation Layer                            |
-|  (WPF UI, XAML, Controls, Pages)                                      |
+|  (WPF UI, XAML, Controls, Pages)  OR  (Electron.NET, HTML, CSS, JS)    |
 +-----------------------------------------------------------------------+
                             |
                             v
@@ -60,6 +60,12 @@ BerryAIGen.Toolkit/
 +-- BerryAIGen.Common/           # Common utilities and interfaces
 +-- BerryAIGen.Data/             # Data models and interfaces
 +-- BerryAIGen.Database/         # Database implementation (SQLite)
++-- BerryAIGen.Electron/         # Electron.NET cross-platform implementation
+    +-- Pages/                  # Razor Pages
+    +-- wwwroot/                # Static web assets
+        +-- css/               # Stylesheets
+        +-- js/                # JavaScript files
+        +-- lang/              # Localization files
 +-- BerryAIGen.Github/           # GitHub integration
 +-- BerryAIGen.IO/               # File I/O operations
 +-- BerryAIGen.Scripting/        # Scripting support
@@ -86,18 +92,23 @@ BerryAIGen.Toolkit/
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | .NET | 8.0 | Core framework |
+| .NET 10.0 | - | Core framework for Electron.NET |
 | WPF | .NET 8.0 | UI framework |
+| Electron.NET | - | Cross-platform desktop framework |
 | SQLite | 3.x | Database |
 | C# | 12.0 | Programming language |
-| XAML | - | UI markup |
+| XAML | - | UI markup for WPF |
+| HTML/CSS/JS | - | UI technologies for Electron.NET |
 
 ### 3.2 Key Dependencies
 
-| Library | Version | Purpose |
-|---------|---------|---------|
-| Dapper | 2.0.123 | Database access |
-| FontAwesome.WPF | 4.7.0.9 | Icon library |
-| WPFLocalizeExtension | - | Internationalization |
+| Library | Version | Purpose | Status |
+|---------|---------|---------|--------|
+| Dapper | 2.0.123 | Database access | Updated |
+| FontAwesome.WPF | 4.7.0.9 | Icon library | .NET Framework compatibility warning suppressed |
+| SixLabors.ImageSharp | 3.1.12 | Image processing | Updated to fix security vulnerability |
+| WPFLocalizeExtension | 3.10.0 | Internationalization | Updated |
+| ElectronNET.API | 23.6.2 | Cross-platform desktop framework | New |
 
 ### 3.3 Development Tools
 
