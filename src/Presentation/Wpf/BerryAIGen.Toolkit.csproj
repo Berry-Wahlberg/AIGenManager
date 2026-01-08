@@ -125,22 +125,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BerryAIGen.Civitai\BerryAIGen.Civitai.csproj" />
-    <ProjectReference Include="..\BerryAIGen.Common\BerryAIGen.Common.csproj" />
-    <ProjectReference Include="..\BerryAIGen.Database\BerryAIGen.Database.csproj" />
-    <ProjectReference Include="..\BerryAIGen.IO\BerryAIGen.IO.csproj" />
-    <ProjectReference Include="..\BerryAIGen.Video\BerryAIGen.Video.csproj" />
+    <ProjectReference Include="..\..\Common\BerryAIGen.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Database\BerryAIGen.Database.csproj" />
+    <ProjectReference Include="..\..\Data\IO\BerryAIGen.IO.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Civitai\BerryAIGen.Civitai.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Video\BerryAIGen.Video.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="ICSharpCode.AvalonEdit">
-      <HintPath>..\lib\ICSharpCode.AvalonEdit.dll</HintPath>
+      <HintPath>..\..\..\lib\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
     <Reference Include="MdXaml">
-      <HintPath>..\lib\MdXaml.dll</HintPath>
+      <HintPath>..\..\..\lib\MdXaml.dll</HintPath>
     </Reference>
     <Reference Include="MdXaml.Plugins">
-      <HintPath>..\lib\MdXaml.Plugins.dll</HintPath>
+      <HintPath>..\..\..\lib\MdXaml.Plugins.dll</HintPath>
     </Reference>
   </ItemGroup>
 
