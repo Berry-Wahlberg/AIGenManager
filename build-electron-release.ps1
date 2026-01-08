@@ -36,7 +36,8 @@ function Write-Log {
         [string]$Level = "INFO"
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    "[$timestamp] [$Level] $Message" | Tee-Object -FilePath $LogFilePath -Append | Write-Host
+    $logMessage = "[{0}] [{1}] {2}" -f $timestamp, $Level, $Message
+    $logMessage | Tee-Object -FilePath $LogFilePath -Append | Write-Host
 }
 
 # Function to check if a command exists
@@ -68,7 +69,7 @@ function Get-VersionFromJson {
         return $version
     }
     catch {
-        Write-Log "Failed to extract version from $FilePath: $_" "ERROR"
+        Write-Log ("Failed to extract version from {0}: {1}" -f $FilePath, ${_}) "ERROR"
         return $null
     }
 }
@@ -87,7 +88,7 @@ function Get-VersionFromTxt {
         return $null
     }
     catch {
-        Write-Log "Failed to extract version from $FilePath: $_" "ERROR"
+        Write-Log ("Failed to extract version from {0}: {1}" -f $FilePath, ${_}) "ERROR"
         return $null
     }
 }
@@ -198,7 +199,7 @@ function Cleanup-TempFiles {
                 Write-Log "Cleaned up: $dir" "INFO"
             }
             catch {
-                Write-Log "Failed to clean up $dir: $_" "WARNING"
+                Write-Log ("Failed to clean up {0}: {1}" -f $dir, ${_}) "WARNING"
             }
         }
     }
@@ -228,7 +229,7 @@ function Manage-FlagFiles {
                 Write-Log "Copied flag file: $flagFile" "INFO"
             }
             catch {
-                Write-Log "Failed to copy flag file $flagFile: $_" "WARNING"
+                Write-Log ("Failed to copy flag file {0}: {1}" -f $flagFile, ${_}) "WARNING"
             }
         } else {
             Write-Log "Flag file not found: $flagFile" "WARNING"
@@ -274,7 +275,7 @@ foreach ($dir in @($OutputPath, $ResourcesPath, $ImagesPath, $LibrariesPath, $Co
             Write-Log "Created directory: $dir" "INFO"
         }
         catch {
-            Write-Log "Failed to create directory $dir: $_" "ERROR"
+            Write-Log ("Failed to create directory {0}: {1}" -f $dir, ${_}) "ERROR"
             exit 1
         }
     }
@@ -316,7 +317,7 @@ while ($retryCount -lt $MaxRetryAttempts -and -not $restoreSuccess) {
             Write-Log "NuGet restore failed. Retrying in 5 seconds... (Attempt $retryCount/$MaxRetryAttempts)" "WARNING"
             Start-Sleep -Seconds 5
         } else {
-            Write-Log "NuGet restore failed after $MaxRetryAttempts attempts: $_" "ERROR"
+            Write-Log ("NuGet restore failed after {0} attempts: {1}" -f $MaxRetryAttempts, ${_}) "ERROR"
             exit 1
         }
     }
@@ -347,7 +348,7 @@ while ($retryCount -lt $MaxRetryAttempts -and -not $buildSuccess) {
             Write-Log "Build failed. Retrying in 5 seconds... (Attempt $retryCount/$MaxRetryAttempts)" "WARNING"
             Start-Sleep -Seconds 5
         } else {
-            Write-Log "Build failed after $MaxRetryAttempts attempts: $_" "ERROR"
+            Write-Log ("Build failed after {0} attempts: {1}" -f $MaxRetryAttempts, ${_}) "ERROR"
             exit 1
         }
     }
@@ -358,7 +359,7 @@ Write-Log "Publishing application..."
 try {
     dotnet publish -c Release -r win-x64 --self-contained true --output "bin\Publish" 2>&1 | Tee-Object -FilePath $LogFilePath -Append
 } catch {
-    Write-Log "Publish failed: $_" "ERROR"
+    Write-Log ("Publish failed: {0}" -f ${_}) "ERROR"
     exit 1
 }
 
@@ -367,7 +368,7 @@ Write-Log "Packaging with electronize..."
 try {
     electronize build /target win 2>&1 | Tee-Object -FilePath $LogFilePath -Append
 } catch {
-    Write-Log "Electron packaging failed: $_" "ERROR"
+    Write-Log ("Electron packaging failed: {0}" -f ${_}) "ERROR"
     exit 1
 }
 
@@ -382,7 +383,7 @@ if (Test-Path $electronOutputDir) {
         Write-Log "Successfully copied output to $OutputPath" "INFO"
     }
     catch {
-        Write-Log "Failed to copy output files: $_" "ERROR"
+        Write-Log ("Failed to copy output files: {0}" -f ${_}) "ERROR"
         exit 1
     }
 } else {

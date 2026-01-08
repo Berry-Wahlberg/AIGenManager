@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BerryAIGen.Toolkit\BerryAIGen.Toolkit.csproj" />
+    <ProjectReference Include="..\src\Presentation\Wpf\BerryAIGen.Toolkit.csproj" />
   </ItemGroup>
 
 </Project>

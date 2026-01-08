@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BerryAIGen.Common\BerryAIGen.Common.csproj" />
-    <ProjectReference Include="..\BerryAIGen.Github\BerryAIGen.Github.csproj" />
+    <ProjectReference Include="..\src\Common\BerryAIGen.Common.csproj" />
+    <ProjectReference Include="..\src\Infrastructure\Github\BerryAIGen.Github.csproj" />
   </ItemGroup>
 
 </Project>
