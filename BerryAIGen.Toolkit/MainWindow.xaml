@@ -51,6 +51,13 @@
             <converters:PopoutIconConverter x:Key="PopoutIconConverter"></converters:PopoutIconConverter>
             <converters:ThumbnailViewModeConverter x:Key="ThumbnailViewModeConverter"></converters:ThumbnailViewModeConverter>
             <converters:IfLessThanConverter x:Key="IfLessThanConverter"></converters:IfLessThanConverter>
+            
+            <!-- Animation for sidebar width changes -->
+            <Style TargetType="ColumnDefinition">
+                <Style.Triggers>
+                    <Trigger Property="Width" Value="*"/>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <local:BorderlessWindow.TitleContent>
@@ -121,7 +128,7 @@
                                         <Setter Property="Opacity" Value="0.2"></Setter>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Opacity" Value="1"></Setter>
+                                                <Setter Property="Opacity" Value="1.0"></Setter>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -133,7 +140,7 @@
                                         <Setter Property="Opacity" Value="0.2"></Setter>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Opacity" Value="1"></Setter>
+                                                <Setter Property="Opacity" Value="1.0"></Setter>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -239,7 +246,7 @@
                                         <Setter Property="Opacity" Value="0.2"></Setter>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Opacity" Value="1"></Setter>
+                                                <Setter Property="Opacity" Value="1.0"></Setter>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -456,64 +463,224 @@
 
 
         <Grid Grid.Row="1">
-            <DockPanel>
-                <Grid Margin="0,5,10,0">
-                    <StackPanel Orientation="Vertical">
-                        <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Folders}"
-                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#folders">
-                            <fa:ImageAwesome ToolTip="Folders (Ctrl+1)" Icon="FolderOutlinepenOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding SidebarWidth, Mode=TwoWay}" MinWidth="50" MaxWidth="240"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Sidebar Content -->
+            <Border Grid.Column="0" Margin="0,5,0,0" Background="{DynamicResource PrimaryBrush}" BorderBrush="{DynamicResource SecondaryBrush}" BorderThickness="0,0,1,0">
+                <Grid>
+                    <StackPanel Orientation="Vertical" Margin="10,0,10,0">
+                        <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Right" Width="32"
+                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding ToggleNavigationPane}">
+                            <fa:ImageAwesome Icon="ChevronLeft" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center">
+                                <fa:ImageAwesome.Style>
+                                    <Style TargetType="fa:ImageAwesome">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Icon" Value="ChevronRight"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </fa:ImageAwesome.Style>
                             </fa:ImageAwesome>
                         </Button>
-                        <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Images}"
-                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#images">
-                            <fa:ImageAwesome ToolTip="Search (Ctrl+2)" Icon="Search" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Foreground="{DynamicResource ForegroundBrush}" FontSize="14" FontWeight="DemiBold" Margin="0,5,0,15">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Setter Property="Content" Value="{lex:Loc Navigation.Section.Main}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                            behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Folders}"
+                            Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#folders">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="Folders (Ctrl+1)" Icon="FolderOutlinepenOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
                             </fa:ImageAwesome>
-                        </Button>
-                        <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Favorites}"
-                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#favorites">
-                            <fa:ImageAwesome ToolTip="Favorites (Ctrl+3)" Icon="HeartOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Content="{lex:Loc Navigation.Item.Folders}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                            behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Images}"
+                            Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#images">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="Search (Ctrl+2)" Icon="Search" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
                             </fa:ImageAwesome>
-                        </Button>
-                        <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=For Deletion}"
-                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#deleted">
-                            <fa:ImageAwesome ToolTip="For Deletion (Ctrl+4)" Icon="TrashOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Content="{lex:Loc Navigation.Item.Search}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                            behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Favorites}"
+                            Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#favorites">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="Favorites (Ctrl+3)" Icon="HeartOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
                             </fa:ImageAwesome>
-                        </Button>
-                        <Separator BorderThickness="1" BorderBrush="{DynamicResource SecondaryBrush}"></Separator>
-                        <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Prompts}"
-                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="prompts">
-                            <fa:ImageAwesome ToolTip="Prompts" Icon="FileTextOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Content="{lex:Loc Navigation.Item.Favorites}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                            behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=For Deletion}"
+                            Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="search/#deleted">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="For Deletion (Ctrl+4)" Icon="TrashOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
                             </fa:ImageAwesome>
-                        </Button>
-                        <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Models}"
-                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="models">
-                            <fa:ImageAwesome ToolTip="Models" Icon="PuzzlePiece" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Content="{lex:Loc Navigation.Item.Trash}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Separator BorderThickness="1" BorderBrush="{DynamicResource SecondaryBrush}" Margin="0,10,0,15"></Separator>
+                    <Label Foreground="{DynamicResource ForegroundBrush}" FontSize="14" FontWeight="DemiBold" Margin="0,5,0,15">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Setter Property="Content" Value="{lex:Loc Navigation.Section.Tools}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                            behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Prompts}"
+                            Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="prompts">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="Prompts" Icon="FileTextOutline" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
                             </fa:ImageAwesome>
-                        </Button>
-                        <Grid>
-                            <Button Margin="0,5,0,10" Height="16" Width="24" 
-                                    behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Settings}"
-                                    Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="settings">
-                                <fa:ImageAwesome ToolTip="Settings" Icon="Gear" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Content="{lex:Loc Navigation.Item.Prompts}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                            behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Models}"
+                            Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="models">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="Models" Icon="PuzzlePiece" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
+                            </fa:ImageAwesome>
+                            <Label Content="{lex:Loc Navigation.Item.Models}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                    <Grid>
+                        <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" 
+                                behaviors:DTBehaviors.IsSelected="{Binding ActiveView, Converter={StaticResource StringMatchConverter}, ConverterParameter=Settings}"
+                                Style="{StaticResource BorderlessToolbarButton}" Command="{Binding GotoUrl}" CommandParameter="settings">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                                <fa:ImageAwesome ToolTip="Settings" Icon="Gear" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
                                 </fa:ImageAwesome>
-                            </Button>
-                            <Ellipse Fill="Red" Width="8" Height="8" Margin="15,0,0,15" Visibility="{Binding IsSettingsDirty, Converter={StaticResource boolToVisCol}}"></Ellipse>
-                        </Grid>
-                        <Separator BorderThickness="1" BorderBrush="{DynamicResource SecondaryBrush}"></Separator>
-                        <Button Margin="0,5,0,10" Height="16" Width="24" Style="{StaticResource BorderlessToolbarButton}" Command="{Binding Rescan}">
-                            <fa:ImageAwesome ToolTip="Scan folders for new images (Ctrl+R)" Icon="Refresh" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            </fa:ImageAwesome>
+                                <Label Content="{lex:Loc Navigation.Item.Settings}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    <Label.Style>
+                                        <Style TargetType="Label">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Label.Style>
+                                </Label>
+                            </StackPanel>
                         </Button>
-                    </StackPanel>
-                </Grid>
-                <Frame x:Name="Frame" Content="{Binding Page}" NavigationUIVisibility="Hidden"></Frame>
-            </DockPanel>
+                        <Ellipse Fill="Red" Width="12" Height="12" Margin="160,10,0,0" Visibility="{Binding IsSettingsDirty, Converter={StaticResource boolToVisCol}}"></Ellipse>
+                    </Grid>
+                    <Separator BorderThickness="1" BorderBrush="{DynamicResource SecondaryBrush}" Margin="0,10,0,15"></Separator>
+                    <Button Margin="0,5,0,10" Height="32" HorizontalAlignment="Stretch" Style="{StaticResource BorderlessToolbarButton}" Command="{Binding Rescan}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="Auto">
+                            <fa:ImageAwesome ToolTip="Scan folders for new images (Ctrl+R)" Icon="Refresh" Width="16" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" Margin="0,0,10,0">
+                            </fa:ImageAwesome>
+                            <Label Content="{lex:Loc Navigation.Item.Rescan}" Foreground="{DynamicResource ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SidebarWidth}" Value="50">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                    </Grid>
+            </Border>
+            <GridSplitter Grid.Column="1" Width="5" ResizeDirection="Columns" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Cursor="SizeWE"/>
+            <Frame x:Name="Frame" Content="{Binding Page}" NavigationUIVisibility="Hidden" Grid.Column="2"></Frame>
         </Grid>
 
 
@@ -577,5 +744,3 @@
     </Grid>
 
 </local:BorderlessWindow>
-
-

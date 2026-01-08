@@ -55,9 +55,9 @@
     <Grid x:Name="MainGrid" Background="{DynamicResource {x:Static SystemColors.ControlBrush}}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition/>
+            <ColumnDefinition Width="300" MinWidth="250"/>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
 
@@ -278,6 +278,7 @@
                                         </Grid>
                                     </controls:AccordionControl>-->
 
+                                    <Label Foreground="{DynamicResource ForegroundBrush}" FontSize="14" FontWeight="DemiBold" Margin="0,10,0,5">{lex:Loc Navigation.Section.Navigation}</Label>
                                     <controls:AccordionControl HeaderBackground="#80000000"  Margin="0,0,0,5"
                                                                Header="{lex:Loc Search.Navigation.Folders}"
                                                                State="{Binding DataContext.NavigationSection.FolderState, ElementName=NavigationThumbnailGrid, Mode=TwoWay}" 

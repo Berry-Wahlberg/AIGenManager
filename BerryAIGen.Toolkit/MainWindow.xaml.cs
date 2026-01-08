@@ -284,7 +284,12 @@ namespace BerryAIGen.Toolkit
 
         private void ToggleNavigationPane()
         {
-            _model.Settings.NavigationSection.ToggleSection();
+            double previousWidth = _model.SidebarWidth;
+            _model.SidebarWidth = _model.SidebarWidth <= 50 ? _model.CustomExpandedWidth : 50;
+            double widthDifference = previousWidth - _model.SidebarWidth;
+            
+            // Adjust window width to utilize newly available space
+            this.Width -= widthDifference;
         }
 
         private void ResetLayout()
