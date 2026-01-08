@@ -1,10 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ElectronNETCoreVersion>23.6.2</ElectronNETCoreVersion>
     <UseElectronNET>true</UseElectronNET>
+    <!-- Additional properties for better packaging -->
+    <PublishSingleFile>false</PublishSingleFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ElectronNET.API" Version="23.6.2" />
@@ -21,4 +27,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <!-- Add build targets for Electron packaging -->
+  <Target Name="ElectronBuild" AfterTargets="Publish">
+    <Exec Command="dotnet tool run electronize build /target win" 
+          WorkingDirectory="$(ProjectDir)" 
+          Condition="'$(UseElectronNET)' == 'true'" />
+  </Target>
 </Project>
