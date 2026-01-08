@@ -29,7 +29,7 @@
   </ItemGroup>
   <!-- Add build targets for Electron packaging -->
   <Target Name="ElectronBuild" AfterTargets="Publish">
-    <Exec Command="dotnet tool run electronize build /target win" 
+    <Exec Command="electronize build /target win" 
           WorkingDirectory="$(ProjectDir)" 
           Condition="'$(UseElectronNET)' == 'true'" />
   </Target>
