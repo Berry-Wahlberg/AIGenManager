@@ -1,4 +1,4 @@
-﻿# BerryAIGen.Toolkit - Technical Development Documentation
+# BerryAIGen.Toolkit - Technical Development Documentation
 
 ## 1. Overview
 
@@ -25,12 +25,12 @@ The vision of BerryAIGen.Toolkit is to create a user-friendly, performant, and e
 
 ### 2.1 System Architecture
 
-The project follows a modular architecture with clear separation of concerns:
+The project follows a modular architecture with clear separation of concerns, supporting both WPF and Electron.NET presentation layers:
 
 ```
 +-----------------------------------------------------------------------+
 |                         Presentation Layer                            |
-|  (WPF UI, XAML, Controls, Pages)                                      |
+|  (WPF UI, XAML, Controls, Pages)  OR  (Electron.NET, HTML, CSS, JS)    |
 +-----------------------------------------------------------------------+
                             |
                             v
@@ -56,27 +56,42 @@ The project follows a modular architecture with clear separation of concerns:
 
 ```
 BerryAIGen.Toolkit/
-+-- BerryAIGen.Civitai/          # Civitai integration
-+-- BerryAIGen.Common/           # Common utilities and interfaces
-+-- BerryAIGen.Data/             # Data models and interfaces
-+-- BerryAIGen.Database/         # Database implementation (SQLite)
-+-- BerryAIGen.Github/           # GitHub integration
-+-- BerryAIGen.IO/               # File I/O operations
-+-- BerryAIGen.Scripting/        # Scripting support
-+-- BerryAIGen.Toolkit/          # Main application (WPF)
-    +-- Controls/               # Custom WPF controls
-    +-- Converters/             # Value converters
-    +-- Configuration/          # Configuration management
-    +-- Localization/           # Internationalization support
-    +-- Models/                 # View models
-    +-- Pages/                  # Application pages
-    +-- Services/               # Business services
-    +-- Thumbnails/             # Thumbnail generation
-    +-- Themes/                 # UI themes and resources
-+-- BerryAIGen.Updater/          # Application updater
-+-- BerryAIGen.Video/            # Video support
-+-- TestBed/                     # Test application
-+-- TestHarness/                 # Unit tests
++-- document/                   # Project documentation
+|   +-- develop/              # Technical development documentation
++-- src/
+    +-- Common/                # Common utilities and interfaces
+    |   +-- BerryAIGen.Common.csproj
+    +-- Data/
+    |   +-- Database/         # Database implementation (SQLite)
+    |   |   +-- BerryAIGen.Database.csproj
+    |   +-- IO/               # File I/O operations and metadata extraction
+    |       +-- BerryAIGen.IO.csproj
+    +-- Infrastructure/
+    |   +-- Civitai/          # Civitai integration
+    |   |   +-- BerryAIGen.Civitai.csproj
+    |   +-- Github/           # GitHub integration
+    |       +-- BerryAIGen.Github.csproj
+    +-- Presentation/
+        +-- Electron/         # Electron.NET cross-platform implementation
+        |   +-- Pages/       # Razor Pages
+        |   |   +-- Index.cshtml.cs # Main search page code-behind
+        |   |   +-- Index.cshtml     # Main search page UI
+        |   +-- wwwroot/     # Static web assets
+        |   |   +-- css/    # Stylesheets
+        |   |   +-- js/     # JavaScript files
+        |   |   +-- lang/   # Localization files
+        |   +-- BerryAIGen.Electron.csproj
+        +-- Wpf/             # Main application (WPF)
+            +-- Controls/    # Custom WPF controls
+            +-- Converters/  # Value converters
+            +-- Configuration/ # Configuration management
+            +-- Localization/ # Internationalization support
+            +-- Models/      # View models
+            +-- Pages/       # Application pages
+            +-- Services/    # Business services
+            +-- Thumbnails/  # Thumbnail generation
+            +-- Themes/      # UI themes and resources
+            +-- BerryAIGen.Toolkit.csproj
 ```
 
 ## 3. Technical Stack
@@ -85,19 +100,24 @@ BerryAIGen.Toolkit/
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| .NET | 8.0 | Core framework |
-| WPF | .NET 8.0 | UI framework |
+| .NET | 8.0 | Core framework for all modules |
+| WPF | .NET 8.0 | Windows desktop UI framework |
+| Electron.NET | 23.6.2 | Cross-platform desktop framework |
 | SQLite | 3.x | Database |
 | C# | 12.0 | Programming language |
-| XAML | - | UI markup |
+| XAML | - | UI markup for WPF |
+| HTML/CSS/JS | - | UI technologies for Electron.NET |
+| Razor Pages | .NET 8.0 | Server-side rendering for Electron.NET |
 
 ### 3.2 Key Dependencies
 
-| Library | Version | Purpose |
-|---------|---------|---------|
-| Dapper | 2.0.123 | Database access |
-| FontAwesome.WPF | 4.7.0.9 | Icon library |
-| WPFLocalizeExtension | - | Internationalization |
+| Library | Version | Purpose | Status |
+|---------|---------|---------|--------|
+| Dapper | 2.0.123 | Database access | Updated |
+| FontAwesome.WPF | 4.7.0.9 | Icon library | .NET Framework compatibility warning suppressed |
+| SixLabors.ImageSharp | 3.1.12 | Image processing | Updated to fix security vulnerability |
+| WPFLocalizeExtension | 3.10.0 | Internationalization | Updated |
+| ElectronNET.API | 23.6.2 | Cross-platform desktop framework | New |
 
 ### 3.3 Development Tools
 
@@ -214,6 +234,170 @@ try
     }
 }
 ```
+
+## 6. Electron.NET Implementation
+
+### 6.1 Overview
+
+The Electron.NET implementation provides a cross-platform GUI alternative to the WPF implementation, allowing the application to run on Windows, macOS, and Linux. It uses ASP.NET Core with Razor Pages for the UI layer, combined with Electron for the desktop container.
+
+### 6.2 Architecture
+
+The Electron.NET architecture follows a similar pattern to the WPF implementation but with web technologies for the UI:
+
+```
++-----------------------------------------------------------------------+
+|                         Electron Container                            |
++-----------------------------------------------------------------------+
+|                         ASP.NET Core Runtime                          |
+|  (Web Server, Razor Pages, Controllers)                               |
++-----------------------------------------------------------------------+
+|                         Business Layer                                |
+|  (Services, ViewModels, Helpers)                                      |
++-----------------------------------------------------------------------+
+|                         Data Layer                                    |
+|  (Database, Models, Repositories)                                     |
++-----------------------------------------------------------------------+
+|                         External Layer                                |
+|  (File System, External Libraries, APIs)                              |
++-----------------------------------------------------------------------+
+```
+
+### 6.3 Key Components
+
+#### 6.3.1 Program.cs
+- Electron.NET entry point that initializes the web server and Electron window
+- Configures core services (DataStore, MetadataScanner)
+- Sets up Electron window properties and event handlers
+
+#### 6.3.2 Index.cshtml.cs (Search Page)
+- Implements search functionality with DataStore integration
+- Handles view mode changes, thumbnail size adjustments, and panel toggling
+- Manages AJAX requests for dynamic UI updates
+
+#### 6.3.3 Index.cshtml (Search UI)
+- Search bar with dynamic results header
+- Thumbnail grid with support for different view modes
+- Filters panel for advanced search options
+- Preview panel for detailed image information
+- Responsive design for various screen sizes
+
+#### 6.3.4 JavaScript Handlers
+- Dynamic UI interactions for search and filtering
+- Thumbnail grid layout management
+- Panel toggling and animation effects
+- AJAX requests for partial page updates
+
+### 6.4 Implementation Details
+
+#### 6.4.1 Search Functionality
+- Implemented using `DataStore.Search()` method with `QueryOptions`
+- Supports dynamic sorting and pagination
+- Uses partial views for efficient result updates
+- Implements debouncing for optimized search performance
+
+#### 6.4.2 UI State Management
+- View state maintained in Razor Page Model
+- AJAX calls update specific UI components without full page reload
+- Responsive design adapts to different screen sizes
+- Supports both grid and list view modes
+
+#### 6.4.3 Integration with Core Services
+- Direct access to `DataStore` for database operations
+- Uses `MetadataScanner` for metadata extraction
+- Shares common services with WPF implementation
+- Consistent data models across both UI implementations
+
+### 6.5 Technical Challenges and Solutions
+
+#### 6.5.1 Cross-Platform Compatibility
+**Challenge**: Ensuring consistent behavior across Windows, macOS, and Linux platforms
+**Solution**: 
+- Use Electron.NET abstractions for platform-specific functionality
+- Test on multiple platforms during development
+- Implement fallback mechanisms for platform-specific features
+
+#### 6.5.2 Performance Optimization
+**Challenge**: Maintaining good performance with web technologies in a desktop application
+**Solution**: 
+- Use partial views for selective UI updates
+- Implement efficient data loading with pagination
+- Optimize JavaScript for minimal DOM manipulations
+- Leverage browser caching for static assets
+
+#### 6.5.3 Integration with Existing Codebase
+**Challenge**: Integrating Electron.NET with the existing WPF-focused codebase
+**Solution**: 
+- Maintain consistent data models across both UI implementations
+- Use dependency injection for service access
+- Abstract platform-specific functionality into common interfaces
+- Follow similar architecture patterns for both implementations
+
+### 6.6 Development Workflow
+
+1. **Build**: `dotnet build src/Presentation/Electron/BerryAIGen.Electron.csproj`
+2. **Run Web Server**: `dotnet run --project src/Presentation/Electron/BerryAIGen.Electron.csproj`
+3. **Launch Electron**: `electronize start` (requires Node.js and ElectronNET.CLI)
+4. **Test**: `dotnet test` for unit tests
+
+### 6.7 Double-Click Launch Functionality
+
+The Electron.NET implementation now supports double-click launch functionality, allowing users to start the application directly by double-clicking the executable file, without any command-line operations.
+
+#### 6.7.1 Configuration Requirements
+
+To enable double-click launch functionality, the following configuration is required:
+
+1. **electron.manifest.json** - Updated with proper packaging settings:
+   - `appId`: Unique identifier for the application
+   - `productName`: User-friendly application name
+   - `copyright`: Copyright information
+   - `singleInstance`: Set to true to prevent multiple instances
+   - `win`: Windows-specific settings including icon, publisher, and target
+
+2. **Program.cs** - Enhanced with robust error handling and improved Electron window initialization:
+   - Proper error handling for Electron window creation
+   - Enhanced core services initialization
+   - Application exit management
+   - Detailed logging for debugging
+
+#### 6.7.2 Build Process
+
+To create a double-click executable:
+
+1. **Build Command**: Use the build-electron-release.ps1 script for comprehensive packaging:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File build-electron-release.ps1
+   ```
+
+2. **Electronize Build**: The script internally uses electronize for packaging:
+   ```bash
+   electronize build /target win
+   ```
+
+3. **Output Location**: The final executable is located in the specified output directory (default: `bin/Desktop`)
+
+#### 6.7.3 Usage Instructions
+
+For end users:
+
+1. **Installation**: Extract the release package to a desired location
+2. **Launch**: Double-click the `BerryAIGen.Electron.exe` file to start the application
+3. **User Experience**: The application opens directly with the main window, providing a user-friendly interface for non-technical users
+
+#### 6.7.4 Technical Details
+
+- **Single File Packaging**: The application is packaged as a single executable file for easy distribution
+- **Self-Contained**: Includes all necessary dependencies, no external requirements
+- **User-Friendly**: Intuitive navigation with clear visual feedback
+- **Robust Error Handling**: Graceful handling of initialization errors with user-friendly error messages
+
+### 6.8 Future Enhancements
+
+- Implement full feature parity with WPF implementation
+- Add multi-language support for Electron UI
+- Enhance performance with web workers for background tasks
+- Add support for custom CSS theming
 
 ## 10. GUI Changes
 

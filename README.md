@@ -1,4 +1,4 @@
-﻿# BerryAIGen.Toolkit
+# BerryAIGen.Toolkit
 
 BerryAIGen.Toolkit is a comprehensive image metadata indexer and viewer designed specifically for AI-generated images. It provides powerful tools to help you organize, search, and manage your growing collection of AI-generated media.
 
@@ -52,8 +52,9 @@ BerryAIGen.Toolkit enables users to:
 ## Installation
 
 ### System Requirements
-- **Operating System**: Windows 10/11
-- **Runtime**: [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (includes the .NET 8.0 Runtime)
+- **Operating System**: Windows 10/11, macOS, Linux (Electron.NET version)
+- **Runtime**: [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (includes the .NET 8.0 Runtime) for WPF version
+- **Runtime**: [.NET 10.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) for Electron.NET version
 
 ### Download and Install
 1. Download the latest release from the [GitHub Releases](https://github.com/Berry-Wahlberg/AIGenManager/releases/latest) page

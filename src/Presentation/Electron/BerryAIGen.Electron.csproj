@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ElectronNETCoreVersion>23.6.2</ElectronNETCoreVersion>
+    <UseElectronNET>true</UseElectronNET>
+    <!-- Additional properties for better packaging -->
+    <PublishSingleFile>false</PublishSingleFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+    <!-- Version information -->
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ElectronNET.API" Version="23.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\BerryAIGen.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Database\BerryAIGen.Database.csproj" />
+    <ProjectReference Include="..\..\Data\IO\BerryAIGen.IO.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Civitai\BerryAIGen.Civitai.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Github\BerryAIGen.Github.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="electron.manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <!-- Add build targets for Electron packaging -->
+  <Target Name="ElectronBuild" AfterTargets="Publish">
+    <Exec Command="electronize build /target win" 
+          WorkingDirectory="$(ProjectDir)" 
+          Condition="'$(UseElectronNET)' == 'true'" />
+  </Target>
+</Project>

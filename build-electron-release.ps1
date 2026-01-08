@@ -8,7 +8,7 @@ robust error handling, and optimized output structure. It creates a ready-to-use
 application that can be launched by double-click.
 
 .EXAMPLE
-.\build-electron-release.ps1
+.uild-electron-release.ps1
 
 .NOTES
 Author: BerryAIGen Team
@@ -103,6 +103,7 @@ function Test-VersionConsistency {
     $filesToCheck = @(
         @{ Path = "src/Presentation/Electron/electron.manifest.json"; Type = "json"; Property = "build.buildVersion" }
         @{ Path = "src/Presentation/Wpf/version.txt"; Type = "txt"; Property = "" }
+        @{ Path = "version.txt"; Type = "txt"; Property = "" }
     )
     
     $allConsistent = $true
@@ -203,6 +204,38 @@ function Cleanup-TempFiles {
     }
 }
 
+# Function to manage flag files
+function Manage-FlagFiles {
+    param (
+        [string]$RootPath,
+        [string]$OutputPath
+    )
+    Write-Log "Managing flag files..."
+    
+    # Define flag files to copy
+    $flagFiles = @(
+        "Berry_ICO.ico",
+        "Berry_LOGO.png"
+    )
+    
+    foreach ($flagFile in $flagFiles) {
+        $sourcePath = Join-Path $RootPath $flagFile
+        $destPath = Join-Path $OutputPath $flagFile
+        
+        if (Test-Path $sourcePath) {
+            try {
+                Copy-Item -Path $sourcePath -Destination $destPath -Force
+                Write-Log "Copied flag file: $flagFile" "INFO"
+            }
+            catch {
+                Write-Log "Failed to copy flag file $flagFile: $_" "WARNING"
+            }
+        } else {
+            Write-Log "Flag file not found: $flagFile" "WARNING"
+        }
+    }
+}
+
 # Main build process
 
 # Step 1: Check dependencies
@@ -249,11 +282,11 @@ foreach ($dir in @($OutputPath, $ResourcesPath, $ImagesPath, $LibrariesPath, $Co
 
 # Step 4: Verify version consistency
 Write-Log "Checking version consistency..."
-$primaryVersionFile = Join-Path $RootPath "src/Presentation/Electron/electron.manifest.json"
-$primaryVersion = Get-VersionFromJson $primaryVersionFile "build.buildVersion"
+$primaryVersionFile = Join-Path $RootPath "version.txt"
+$primaryVersion = Get-VersionFromTxt $primaryVersionFile
 
 if (-not $primaryVersion) {
-    Write-Log "Failed to determine primary version from electron.manifest.json" "ERROR"
+    Write-Log "Failed to determine primary version from version.txt" "ERROR"
     exit 1
 }
 
@@ -380,7 +413,10 @@ try {
     Write-Log "Failed to create version.txt: $_" "WARNING"
 }
 
-# Step 14: Cleanup temporary build files
+# Step 14: Manage flag files
+Manage-FlagFiles $RootPath $OutputPath
+
+# Step 15: Cleanup temporary build files
 Cleanup-TempFiles $RootPath
 
 # Final build completion message
