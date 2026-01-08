@@ -88,7 +88,7 @@ if (HybridSupport.IsElectronActive)
             // Show error dialog to user if possible
             try
             {
-                await Electron.Dialog.ShowErrorBoxAsync("Application Error", 
+                Electron.Dialog.ShowErrorBox("Application Error", 
                     $"Failed to initialize Electron window: {ex.Message}\n\n" +
                     "Please contact support or restart the application.");
                 Electron.App.Quit();
@@ -133,9 +133,9 @@ void InitializeCoreServices()
         // Show error dialog to user if possible
         if (HybridSupport.IsElectronActive)
         {
-            Task.Run(async () =>
+            Task.Run(() =>
             {
-                await Electron.Dialog.ShowErrorBoxAsync("Application Error", 
+                Electron.Dialog.ShowErrorBox("Application Error", 
                     $"Failed to initialize core services: {ex.Message}\n\n" +
                     "Please contact support or restart the application.");
                 Electron.App.Quit();
