@@ -35,3 +35,6 @@ build
 build-self-contained
 .vscode
 .trae
+#FreeFileSync temporary files
+sync.ffs_db
+sync.ffs_lock
