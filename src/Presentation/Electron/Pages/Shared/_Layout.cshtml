@@ -70,6 +70,9 @@
                     <button class="toolbar-btn" aria-label="Refresh" id="refresh-btn">
                         <span class="toolbar-icon">🔄</span>
                     </button>
+                    <button class="toolbar-btn" aria-label="Toggle theme" id="theme-toggle">
+                        <span class="toolbar-icon">🌓</span>
+                    </button>
                     <button class="toolbar-btn" aria-label="Settings" id="settings-btn">
                         <span class="toolbar-icon">⚙️</span>
                     </button>
@@ -86,6 +89,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/navigation.js"></script>
+    <script src="~/js/theme.js" asp-append-version="true"></script>
+    <script src="~/js/localization.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
