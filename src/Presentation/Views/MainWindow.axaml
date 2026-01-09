@@ -1,0 +1,59 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AIGenManager.Presentation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="AIGenManager.Presentation.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AI Image Manager">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Folder Tree View -->
+        <Border Grid.Column="0" Background="#f0f0f0" Padding="5">
+            <StackPanel>
+                <TextBlock Text="Folders" FontWeight="Bold" Margin="0 0 0 10"/>
+                <TreeView ItemsSource="{Binding Folders}" SelectedItem="{Binding SelectedFolder}">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path}" Margin="0 2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+                <Button Content="Load Images" Command="{Binding LoadImagesForSelectedFolderCommand}" Margin="0 10 0 0"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Images Grid -->
+        <Border Grid.Column="1" Padding="10">
+            <StackPanel>
+                <TextBlock Text="Images" FontWeight="Bold" Margin="0 0 0 10"/>
+                <ListBox ItemsSource="{Binding Images}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="0 5">
+                                <TextBlock Text="{Binding FileName}"/>
+                                <TextBlock Text="{Binding Path}" FontSize="12" Foreground="Gray"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>

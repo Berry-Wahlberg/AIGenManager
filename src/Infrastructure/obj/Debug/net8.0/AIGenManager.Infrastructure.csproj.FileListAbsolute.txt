@@ -1,0 +1,16 @@
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.csproj.AssemblyReference.cache
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.AssemblyInfoInputs.cache
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.AssemblyInfo.cs
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.csproj.CoreCompileInputs.cache
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.sourcelink.json
+D:\deving\AIGenManager\src\Infrastructure\bin\Debug\net8.0\AIGenManager.Infrastructure.deps.json
+D:\deving\AIGenManager\src\Infrastructure\bin\Debug\net8.0\AIGenManager.Infrastructure.dll
+D:\deving\AIGenManager\src\Infrastructure\bin\Debug\net8.0\AIGenManager.Infrastructure.pdb
+D:\deving\AIGenManager\src\Infrastructure\bin\Debug\net8.0\AIGenManager.Core.dll
+D:\deving\AIGenManager\src\Infrastructure\bin\Debug\net8.0\AIGenManager.Core.pdb
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenMan.77FD2F41.Up2Date
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.dll
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\refint\AIGenManager.Infrastructure.dll
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\AIGenManager.Infrastructure.pdb
+D:\deving\AIGenManager\src\Infrastructure\obj\Debug\net8.0\ref\AIGenManager.Infrastructure.dll

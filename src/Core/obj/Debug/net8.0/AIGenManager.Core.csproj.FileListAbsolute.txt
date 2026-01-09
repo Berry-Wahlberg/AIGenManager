@@ -1,0 +1,12 @@
+D:\deving\AIGenManager\src\Core\bin\Debug\net8.0\AIGenManager.Core.deps.json
+D:\deving\AIGenManager\src\Core\bin\Debug\net8.0\AIGenManager.Core.dll
+D:\deving\AIGenManager\src\Core\bin\Debug\net8.0\AIGenManager.Core.pdb
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.AssemblyInfoInputs.cache
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.AssemblyInfo.cs
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.csproj.CoreCompileInputs.cache
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.sourcelink.json
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.dll
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\refint\AIGenManager.Core.dll
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\AIGenManager.Core.pdb
+D:\deving\AIGenManager\src\Core\obj\Debug\net8.0\ref\AIGenManager.Core.dll

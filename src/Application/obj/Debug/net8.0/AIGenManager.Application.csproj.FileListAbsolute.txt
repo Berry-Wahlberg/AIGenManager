@@ -1,0 +1,16 @@
+D:\deving\AIGenManager\src\Application\bin\Debug\net8.0\AIGenManager.Application.deps.json
+D:\deving\AIGenManager\src\Application\bin\Debug\net8.0\AIGenManager.Application.dll
+D:\deving\AIGenManager\src\Application\bin\Debug\net8.0\AIGenManager.Application.pdb
+D:\deving\AIGenManager\src\Application\bin\Debug\net8.0\AIGenManager.Core.dll
+D:\deving\AIGenManager\src\Application\bin\Debug\net8.0\AIGenManager.Core.pdb
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.csproj.AssemblyReference.cache
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.AssemblyInfoInputs.cache
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.AssemblyInfo.cs
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.csproj.CoreCompileInputs.cache
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.sourcelink.json
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenMan.6D80335A.Up2Date
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.dll
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\refint\AIGenManager.Application.dll
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\AIGenManager.Application.pdb
+D:\deving\AIGenManager\src\Application\obj\Debug\net8.0\ref\AIGenManager.Application.dll
